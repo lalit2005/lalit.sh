@@ -1,0 +1,11 @@
+.link-underline {
+  @apply underline decoration-dotted  decoration-blue-500 hover:decoration-blue-400;
+}
+
+.title {
+  @apply mb-5 opacity-20 text-6xl font-black -z-40 bg-gradient-to-b from-zinc-100 font-mono to-transparent text-transparent bg-clip-text select-none;
+}
+
+.title + * {
+  @apply -mt-10;
+}

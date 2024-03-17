@@ -1,0 +1,65 @@
+---
+const projectsData = [
+  {
+    name: "Hyperdocs",
+    description: "Easiest way to build documentation for your project",
+  },
+  {
+    name: "Pagely",
+    description: "Build blazing fast websites from Notion. In light speed",
+  },
+  {
+    name: "StaticShield",
+    description:
+      "Password protect any website in no time with a single line of code",
+  },
+  {
+    name: "Ultraresume",
+    description:
+      "A simple interactive resume builder. Built in 24 hours for a hackathon",
+  },
+  {
+    name: "React tiny tooltip",
+    description:
+      "A small, simple and opinionated library for buildings tooltips in react",
+  },
+  {
+    name: "Chivel",
+    description:
+      "Create a stunning landing page for your Youtube channel in seconds",
+  },
+  {
+    name: "use-web3forms",
+    description:
+      "A tiny library that makes form submissions easier with Web3Forms",
+  },
+  {
+    name: "Paperclip",
+    description:
+      "From notes to code playgrounds, Paperclip is an all in one tool you need.",
+  },
+  {
+    name: "Copii",
+    description:
+      "Ready to use fully functional copy button for GitHub README files.",
+  },
+];
+
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="Projects | Lalit">
+  <div>
+    <h1 class="title">projects</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+      {
+        projectsData.map((p, i) => (
+          <a href={`/projects/${p.name.toLowerCase().replace(/\s/g, "-")}`}>
+            <Card title={p.name} description={p.description} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
