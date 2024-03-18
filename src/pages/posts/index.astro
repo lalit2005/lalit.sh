@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const posts: CollectionEntry<"posts">[] = await getCollection("posts");
+---
+
+<Layout title="Posts | Lalit">
+  <div>
+    <h1 class="title">posts</h1>
+    <div class="post-list">
+      {
+        posts.map((p, i) => (
+          <a
+            href={`/posts/${p.slug}`}
+            class="hover:text-zinc-500 p-2 border-b border-b-zinc-800 flex justify-between items-center border-double"
+          >
+            <span>{p.data.title}</span>
+            <span class="text-zinc-600 font-mono">
+              {Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+              }).format(new Date(p.data.date))}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .post-list > a:nth-child(1) {
+    @apply border-t border-t-zinc-800;
+  }
+</style>

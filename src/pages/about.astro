@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("pages", "about");
+const { Content } = await entry.render();
+---
+
+<Layout title="About">
+  <h1 class="title">about</h1>
+  <div class="md-content">
+    <Content />
+  </div>
+</Layout>

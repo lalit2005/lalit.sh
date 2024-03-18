@@ -1,0 +1,187 @@
+---
+title: "Copii: Ready to use fully functional copy button for GitHub README files"
+description: "Copii lets you easily add a copy button in your markdown files that copies anything. I'll go through the process of building it"
+date: "7-2-2021"
+image: "/static/blog/copii/og.png"
+---
+
+Have you always wanted to add a `copy` button in your README files in GitHub?
+Then you have found the right project. With **Copii**, you can easily add a copy button in your markdown files. There are 3 types of button you can add/use 👇.
+
+_UPDATE: Even if it opens in new tab, now it gets closed automatically_
+
+{/* 1.  [![copy](https://cdn.jsdelivr.net/gh/lalit2005/copii@master/assets/copy.svg)](https://copii.vercel.app/?ct=hello&tm=blk&lg=https://avatars.githubusercontent.com/u/69138026?s=60&v=4)
+
+2.  [![copy](https://cdn.jsdelivr.net/gh/lalit2005/copii@master/assets/copy-above-code.svg)](https://copii.vercel.app/?ct=hello&tm=blk&lg=https://avatars.githubusercontent.com/u/69138026?s=60&v=4)
+
+3.  [![copy](https://cdn.jsdelivr.net/gh/lalit2005/copii@master/assets/copy-below-code.svg)](https://copii.vercel.app/?ct=hello&tm=wt&lg=https://avatars.githubusercontent.com/u/69138026?s=60&v=4) */}
+
+You can click on any of the above buttons and don't worry, you will be redirected back to the same blog post you are reading...
+
+Interesting part comes here, now check your clipboard after clicking any one of the above buttons.
+You will find `hello` there.
+
+**You can contribute to all the 50 million+ repositories in the world by adding a `Copy` button to all the code snippets and examples in readme files**
+
+**The result can be from this**
+
+{/* <Image s={'/static/blog/copii/contributions-1.png'} a={''} d={'750x180'} /> */}
+
+**to this 👇**
+
+{/* <Image s={'/static/blog/copii/contributions-2.png'} a={''} d={'750x180'} /> */}
+
+Read more to find out how to use this and how I made it for the Vercel Hashnode Hackathon.
+
+---
+
+## Demo
+
+[View demo here](https://bit.ly/2YSQxj1)
+
+## How to use Copii 👇
+
+- Head over to [Copii homepage](https://copii.vercel.app/home)
+- Scroll down to the form
+  {/* <Image s={'/static/blog/copii/form.png'} a={''} d={'720x400'} /> */}
+- Check the check box if you want Dark Mode in redirecting page ( optional )
+  {/* <Image s={'/static/blog/copii/dark-mode.png'} a={''} d={'1113x461'} /> */}
+- Enter the text/code you want to be copied when the user clicks on `Copy` button in README file
+  {/* <Image s={'/static/blog/copii/textarea.png'} a={''} d={'720x400'} /> */}
+- Enter the URL ( optional ) for custom logo in redirecting page
+  {/* <Image s={'/static/blog/copii/custom-logo.png'} a={''} d={'720x400'} /> */}
+- Click on `Generate`
+  {/* <Image s={'/static/blog/copii/generate.png'} a={''} d={'720x400'} /> */}
+- Now you will be able to see 3 buttons that you can use
+  {/* <Image s={'/static/blog/copii/result.png'} a={''} d={'720x800'} /> */}
+- Click on any of the button to copy its markdown code. When a user clicks on any of button in README or any other rendered markdown file, user will be taken to `https://copii.vercel.app/?ct=hi`( for example ) and the text/code gets copied to clipboard there. Now, the user will be redirected back to same part webpage/github readme back with the help of `History API`
+- Paste the markdown code in your markdown file/readme file and you are good to go 😲
+- Visit [GitHub repo](https://github.com/Lalit2005/copii#default-copy-button) for more real world examples.
+
+---
+
+![demo](https://bit.ly/copii-gif)
+
+---
+
+## Useful links
+
+1. [GitHub repo](https://github.com/lalit2005/copii)
+2. [Website homepage](https://copii.vercel.app/home)
+
+---
+
+## The situation
+
+First of all, thanks a lot for reading my first blog post ever.
+
+This might be the most awkward sub heading here. In this section I would like to give some reasons for the absence of best practices, good comments, meaningful commit messages and other good stuff in **Copii**'s codebase.
+
+But I will ensure that I will refactor the code in my free time ;D
+
+I first saw the post about this hackathon on 23rd January 2021. At that time I thought I will not be able to participate in this hackathon because of **EXAMS** 😖. I had exams starting from 25th of January to 5th of February. But yesterday I rolled up my sleeves and started working on this project. This is the first project I have worked on alone. Another one I can call a project is the [Netflix clone](https://github.com/lalit2005/netflix-clone) 😞 that I made. But I would not assume it as a project because I took the help of some YouTube videos to build it. So this is kind of my first project and fortunately it also happened to be my first project for a hackathon 😁. I had this project idea from a long time ( I guess about some 4-5 months ), but I did not find time to start it. This is also the reason for less number of features in the app and "not so clean" code...
+
+---
+
+## Features
+
+{/* <Image s={'/static/blog/copii/dark-mode.png'} a={''} d={'1113x461'} /> */}
+
+- Dark Mode for redirection page.
+- Support for custom logo in redirection page.
+- Can be used to copy upto 1,500 characters ( can vary depending upon the length of URL of custom logo ).
+- And many more coming very soon...
+
+---
+
+## Tech Stack 📚
+
+This might be the most boring tech stack of all time. But I really wanted to use the awesome framework of React - Next.js by Vercel ▲. I also wanted my site to be lightning fast ⚡️. Vercel is also a cherry on top for speed of the website. So I went with -
+
+1. HTML
+2. CSS
+3. Vanilla Javascript
+4. Vercel ( formerly Zeit ) for hosting
+   ⚠️ Copii app highly relies on query parameters.
+
+> My stack requires no maintenance, has perfect Lighthouse scores, will never have any security vulnerability, is based on open standards, is portable, has an instant dev loop, has no build step and… will outlive any other stack.
+
+> -by Steren Giannini
+
+---
+
+## Challenges Faced
+
+1. Special characters
+   - Characters such as `&` and `#` created a problem because the browser assumed it to be parts of
+     the URL and not a part of the copying text.
+   - So I had to convert them to some special characters before appending them to the URL.
+     I used some combination of characters such as `¬`, `Ω`, `ß`, etc..
+     Here's the snippet that does that
+
+##### Encoding
+
+```js
+let convertText = (copyText) => {
+  let copyTextArray = copyText.toString().split("");
+  if (copyTextArray.indexOf("\n") !== -1) {
+    copyText = copyText.replaceAll("\n", "¬ß≈");
+  }
+  if (copyTextArray.indexOf("&") !== -1) {
+    copyText = copyText.replaceAll("&", "¬Ω≈");
+  }
+  if (copyTextArray.indexOf("=") !== -1) {
+    copyText = copyText.replaceAll("=", "¬Ωœ");
+  }
+  if (copyTextArray.indexOf("\t") !== -1) {
+    copyText = copyText.replaceAll("\t", "    ");
+  }
+  if (copyTextArray.indexOf(" ") !== -1) {
+    copyText = copyText.replaceAll(" ", "%20");
+  }
+  if (copyTextArray.indexOf("#") !== -1) {
+    copyText = copyText.replaceAll("#", "[hashtag]");
+  }
+  return copyText;
+};
+```
+
+##### Decoding
+
+```js
+searchParams.ct = searchParams.ct.replaceAll("¬Ω≈", "&");
+searchParams.ct = searchParams.ct.replaceAll("¬ß≈", "\n");
+searchParams.ct = searchParams.ct.replaceAll("¬Ωœ", "=");
+```
+
+- ##### I am still facing problems in converting `#`, for now I am converting it to `[hashtag]`
+
+2. URLSearchParams API
+   - `URLSearchParams` API does not work on Internet Explorer. So I took the help of StackOverflow
+     and found the following code block
+
+```js
+decodeURI(window.location.search)
+  .replace("?", "")
+  .split("&")
+  .map((param) => param.split("="))
+  .reduce((values, [key, value]) => {
+    searchParams[key] = value;
+    return values;
+  }, {});
+```
+
+3.  Responsiveness
+    - From the start(yesterday morning), I wanted to make the website responsive with the least effort
+      and less code. I was almost done with the website, but I had a hard time making the position of blob
+      responsive to screen sizes. Now it looks good on mobiles and laptops
+
+These are some of the major challenges faced 😅
+
+## Thanks 🙏
+
+That's all for now.
+
+PR's are welcome 👨🏻‍💻
+
+Thanks to Hashnode team for conducting such wonderful hackathon :)

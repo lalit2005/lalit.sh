@@ -45,13 +45,14 @@ const projectsData = [
   },
 ];
 
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
 ---
 
 <Layout title="Projects | Lalit">
   <div>
     <h1 class="title">projects</h1>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
       {
         projectsData.map((p, i) => (
