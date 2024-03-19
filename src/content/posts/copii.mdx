@@ -1,7 +1,7 @@
 ---
-title: "Copii: Ready to use copy button for README files"
+title: "Copii: Ready to use fully functional copy button for GitHub README files"
 description: "Copii lets you easily add a copy button in your markdown files that copies anything. I'll go through the process of building it"
-date: "7-2-2021"
+date: "7-2-2023"
 image: "/static/blog/copii/og.png"
 ---
 
@@ -9,6 +9,12 @@ Have you always wanted to add a `copy` button in your README files in GitHub?
 Then you have found the right project. With **Copii**, you can easily add a copy button in your markdown files. There are 3 types of button you can add/use 👇.
 
 _UPDATE: Even if it opens in new tab, now it gets closed automatically_
+
+1.  [![copy](https://cdn.jsdelivr.net/gh/lalit2005/copii@master/assets/copy.svg)](https://copii.vercel.app/?ct=hello&tm=blk&lg=https://avatars.githubusercontent.com/u/69138026?s=60&v=4)
+
+2.  [![copy](https://cdn.jsdelivr.net/gh/lalit2005/copii@master/assets/copy-above-code.svg)](https://copii.vercel.app/?ct=hello&tm=blk&lg=https://avatars.githubusercontent.com/u/69138026?s=60&v=4)
+
+3.  [![copy](https://cdn.jsdelivr.net/gh/lalit2005/copii@master/assets/copy-below-code.svg)](https://copii.vercel.app/?ct=hello&tm=wt&lg=https://avatars.githubusercontent.com/u/69138026?s=60&v=4)
 
 You can click on any of the above buttons and don't worry, you will be redirected back to the same blog post you are reading...
 
@@ -19,11 +25,11 @@ You will find `hello` there.
 
 **The result can be from this**
 
-{/* <Image s={'/static/blog/copii/contributions-1.png'} a={''} d={'750x180'} /> */}
+<img src={"/static/blog/copii/contributions-1.png"} alt={""} />
 
 **to this 👇**
 
-{/* <Image s={'/static/blog/copii/contributions-2.png'} a={''} d={'750x180'} /> */}
+<img src={"/static/blog/copii/contributions-2.png"} alt={""} />
 
 Read more to find out how to use this and how I made it for the Vercel Hashnode Hackathon.
 
@@ -37,17 +43,17 @@ Read more to find out how to use this and how I made it for the Vercel Hashnode 
 
 - Head over to [Copii homepage](https://copii.vercel.app/home)
 - Scroll down to the form
-  {/* <Image s={'/static/blog/copii/form.png'} a={''} d={'720x400'} /> */}
+  <img src={"/static/blog/copii/form.png"} alt={""} />
 - Check the check box if you want Dark Mode in redirecting page ( optional )
-  {/* <Image s={'/static/blog/copii/dark-mode.png'} a={''} d={'1113x461'} /> */}
+  <img src={"/static/blog/copii/dark-mode.png"} alt={""} />
 - Enter the text/code you want to be copied when the user clicks on `Copy` button in README file
-  {/* <Image s={'/static/blog/copii/textarea.png'} a={''} d={'720x400'} /> */}
+  <img src={"/static/blog/copii/textarea.png"} alt={""} />
 - Enter the URL ( optional ) for custom logo in redirecting page
-  {/* <Image s={'/static/blog/copii/custom-logo.png'} a={''} d={'720x400'} /> */}
+  <img src={"/static/blog/copii/custom-logo.png"} alt={""} />
 - Click on `Generate`
-  {/* <Image s={'/static/blog/copii/generate.png'} a={''} d={'720x400'} /> */}
+  <img src={"/static/blog/copii/generate.png"} alt={""} />
 - Now you will be able to see 3 buttons that you can use
-  {/* <Image s={'/static/blog/copii/result.png'} a={''} d={'720x800'} /> */}
+  <img src={"/static/blog/copii/result.png"} alt={""} />
 - Click on any of the button to copy its markdown code. When a user clicks on any of button in README or any other rendered markdown file, user will be taken to `https://copii.vercel.app/?ct=hi`( for example ) and the text/code gets copied to clipboard there. Now, the user will be redirected back to same part webpage/github readme back with the help of `History API`
 - Paste the markdown code in your markdown file/readme file and you are good to go 😲
 - Visit [GitHub repo](https://github.com/Lalit2005/copii#default-copy-button) for more real world examples.
@@ -79,7 +85,7 @@ I first saw the post about this hackathon on 23rd January 2021. At that time I t
 
 ## Features
 
-{/* <Image s={'/static/blog/copii/dark-mode.png'} a={''} d={'1113x461'} /> */}
+<img src={"/static/blog/copii/dark-mode.png"} alt={""} />
 
 - Dark Mode for redirection page.
 - Support for custom logo in redirection page.

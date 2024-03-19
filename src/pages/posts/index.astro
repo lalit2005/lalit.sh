@@ -17,10 +17,10 @@ const posts: CollectionEntry<"posts">[] = await getCollection("posts");
           .map((p, i) => (
             <a
               href={`/posts/${p.slug}`}
-              class="hover:text-zinc-500 p-2 border-b border-b-zinc-800 flex justify-between items-center border-double"
+              class="hover:text-zinc-500 p-2 border-b border-b-zinc-800 flex flex-col sm:flex-row justify-between sm:items-center border-double"
             >
               <span>{p.data.title}</span>
-              <span class="text-zinc-600 font-mono font-semibold uppercase text-sm">
+              <span class="text-zinc-600 font-mono font-semibold uppercase text-xs sm:text-sm">
                 {Intl.DateTimeFormat("en-US", {
                   year: "numeric",
                   month: "short",

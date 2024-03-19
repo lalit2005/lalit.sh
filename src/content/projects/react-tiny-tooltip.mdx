@@ -1,19 +1,10 @@
 ---
-name: React tiny tooltip
-summary: A small, simple and opinionated library for buildings tooltips in react.
-image: /static/blog/react-tiny-tooltip/og.png
+title: React tiny tooltip
+description: A small and simple library for buildings tooltips in react.
+image: /static/posts/react-tiny-tooltip/og.png
 link: https://hyperdocs.netlify.app/rtt?ref=personalwebsite
 github: https://github.com/lalit2005/react-tiny-tooltip
-postedOn: '2022-5-26'
-isFeatured: false
-builtWith:
-  [
-    'tsup',
-    'typescript',
-		'radix-ui',
-		'stitches-ui',
-		'react'
-  ]
+date: "26-6-2022"
 ---
 
 I built this library to make building tooltips in react a breeze. It is a small, opinionated library that is easy to use and easy to understand.
@@ -21,17 +12,17 @@ I built this library to make building tooltips in react a breeze. It is a small,
 I built this tooltip component while building [Paperclip](/projects/paperclip). I liked it and wanted to reuse it in all my other projects.
 So I ended up building this library.
 
-You can view a blog post about this library [here](/blog/react-tiny-tooltip).
+You can view a blog post about this library [here](/posts/react-tiny-tooltip).
 
 This is the code you need to build an accessible, styled, simple, powerful tooltip in react.
 
 ```jsx
-import React from 'react';
-import { Tooltip } from 'react-tiny-tooltip';
+import React from "react";
+import { Tooltip } from "react-tiny-tooltip";
 
 export default () => (
   <div>
-    <Tooltip content='Hello there' side='top'>
+    <Tooltip content="Hello there" side="top">
       <button>Hover here!</button>
     </Tooltip>
   </div>

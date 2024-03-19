@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 console.log(Astro.props);
-const { post }: { post: CollectionEntry<"post"> } = Astro.props;
+const post = Astro.props.post;
 const { Content } = await post.render();
 ---
 

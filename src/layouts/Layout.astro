@@ -20,18 +20,18 @@ import Nav from "../components/Nav.astro";
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link
-      href="https://api.fontshare.com/v2/css?f[]=erode@500,400&display=swap"
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic"
       rel="stylesheet"
     />
     <link
-      href="https://api.fontshare.com/v2/css?f[]=tabular@600,500,400&display=swap"
+      href="https://api.fontshare.com/v2/css?f[]=erode@500,400&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
   </head>
   <body class="selection:text-blue-400 selection:bg-green-500/10">
     <Nav />
-    <main class="max-w-4xl mx-auto px-5 py-2 mt-32">
+    <main class="max-w-4xl mx-auto px-5 py-2 mt-28 sm:mt-32">
       <slot />
     </main>
   </body>
@@ -40,6 +40,11 @@ import Nav from "../components/Nav.astro";
 <style>
   html {
     @apply bg-zinc-950 text-zinc-400 antialiased text-lg;
+  }
+
+  body::after {
+    content: "";
+    @apply w-full bg-gradient-to-t from-zinc-950 to-transparent h-16 fixed bottom-0;
   }
 
   :root {

@@ -1,0 +1,240 @@
+---
+title: "Introducing Hyperdocs - The simplest way to build docs for your project"
+description: "How I built Hyperdocs - A docs generator that combines the best of Docusaurus and GitBook"
+image: "/static/blog/hyperdocs/og.png"
+date: "1-3-2023"
+---
+
+import LoomEmbed from "../../components/blog/LoomEmbed";
+
+Documentation is one of the main reason why a project or a library becomes popular. It's very important for a medium to large scale project to have documentation.
+
+The better and beautiful a documentation is, the more popular the project becomes.
+
+But the documenting tools present now require way too much boilerplate, becomes tedious to maintain,
+loads of configs and require separate deployment pipelines and more.
+
+That is why I came up with [**Hyperdocs**](https://hyperdocs.netlify.app/)
+
+Hyperdocs is the easiest way one can build documentation site for any project. It requires **no config** at all!
+
+To show the potential of Hyperdocs, I rebuilt the Hashnode support docs with Hyperdocs. View it [here](https://hyperdocs.netlify.app/hashnode/docs)
+
+## Overview
+
+<img
+  s="/static/blog/hyperdocs/generated-docs.png"
+  a="Generated docs"
+  d="775x500"
+/>
+
+Before diving into my project, let's see how the current tooling works.
+
+All the current documentation tools can be broadly categorized into 3 types
+
+- **Static Site Generators** → These are tools such as Docusarus, VeuPress and Nextra that use frameworks such as Gatsby, Vue.js and Next.js respectively. They help you generating a completely static site from markdown files combined with config files.
+
+- **On the fly generators** → Tools such as Docsify and Docute fetch content from GitHub on the fly, parse them and renders it. This is a completely client side solution hence it is not SEO friendly. But this eliminates the requirement of redeployment on every change to docs.
+
+- **Paid tools** → Paid tools like GitBook, Super and others which generate docs from text editors like Notion require you to have write content on different platforms. They fetch the content from them and creates a documentation website. This makes collaboration very difficult. Other devs will not be able to contribute to your docs that you created.
+
+What if you could combine the best of all tools?
+
+<LoomEmbed
+  client:load
+  src="https://www.loom.com/share/64bb8c253a5d4cdabbc5ac4db92df606"
+  text="Introducing Hyperdocs"
+/>
+
+## What is Hyperdocs
+
+Basically, Hyperdocs is a documentation generating tool which fetches markdown files from a `docs` folder from GitHub, statically generates it on the server and sends html to the client.
+
+But that's not it. Hyperdocs also provides a blog for each project created so that you can make your new release announcements and other news there.
+
+Hyperdocs also provides many services that is not present in any other tool such as feedback collection, publishing blogs from a dashboard(more on this later), no configuration files need at all. Yet the generated docs are highly customizable.
+
+When you write content for your documentation, you don't need to just have plain markdown there. Hyperdocs provides many prebuilt components that you can use while authoring your docs.
+
+## Some handy links
+
+- Hyperdocs website - https://hyperdocs.netlify.app
+- GitHub Repo - https://github.com/lalit2005/hyperdocs
+- Hashnode support rebuild - https://hyperdocs.netlify.app/hashnode/docs
+- Hyperdocs Documentation - https://hyperdocs.netlify.app/hyperdocs/docs
+- Hyperdocs vs Docusaurus - https://hyperdocs.netlify.app/hyperdocs/docs/vs-docusaurus
+
+## Features
+
+A brief overview of all the features of Hyperdocs
+
+- **No configuration** required.
+- **No rebuilds** or dealing with hosting providers needed.
+- Built in **blog** for your project.
+- **Premade compoenents** for your docs such as callouts, tooltips, react live code preview, etc. all inside markdown.
+- Built in **feedback collection widget**.
+- Ability to add custom domains/subdomains for your site.
+- Super fast documentation and blogs hosted on edge on **Netlify**.
+- Use different themes and plugins to enhance the look and feel of your documentation.
+- Auto updating docs site that fetches content from GitHub repo periodically.
+- Ability to use jsx inside markdown.
+- Dashboard to manage your docs site.
+- Support for private repositories.
+- A [playground](https://hyperdocs.netlify.app/playground) to test out markdown snippets
+
+### Feedbacks
+
+<img
+  s="/static/blog/hyperdocs/feedback.png"
+  a="Feedbacks dashboard image"
+  d="775x500"
+/>
+
+Feedbacks play a vital role in creating a delightful documentation.
+
+Hyperdocs provides a complete feedback collection system for your docs. Every site has a feedback collecting widget that helps you gather feedback from your users.
+
+Feedbacks also come with a rating that's measured in terms of stars out of five.
+
+All the feedbacks can be seen in the dashboard
+
+No other documentation tools out there provide such a feature.
+
+### Blogs
+
+<img
+  s="/static/blog/hyperdocs/blogs.png"
+  a="Blogs dashboard image"
+  d="770x335"
+/>
+
+Hyperdocs lets you add a blog that lives beside the documentation
+
+This is also an other feature which only a few of the documentation generators provide.
+
+Not every project requires a blog. With Hyperdocs, you can just remove the blog link from navbar in dashboard.
+
+With Hyperdocs, you can write the blog post and save it as draft in dashboard. Publish it only when you feel it's done.
+
+But with other tools such as Docusaurus, there's high chance of pushing and deploying drafts to GitHub.
+
+I've also published this blog in Hyperdocs Blog → https://hyperdocs.netlify.app/hyperdocs/blog/hello-hyperdocs
+
+### Config
+
+Hyperdocs works without any special configuration. But when it comes to sidebar, there's no way one can decide in which order you want the files to be.
+
+Every documentation tool requires you to have a `sidebar.json` or a similar json file that decides the order. But Hyperdocs just asks for a `_sidebar.txt`. Yes a text file.
+
+**Having this file is optional!!**. If you don't add a `_sidebar.txt`, the links in sidebar will be in a random order.
+
+This file just contains the list of markdown files in a specific order in which you want the links in sidebar to be.
+
+Another thing is an `index.md` file that will be the `/docs/ ` of the generated website. This is again an optional one.
+
+But wait. As the size of markdown files grow, adding the file to `_sidebar.txt` everytime can become tedious. That's where the **Hyperdocs CLI** can help you.
+
+### CLI
+
+<img src="/static/blog/hyperdocs/cli.png" alt="CLI image" />
+
+Hyperdocs also has a tiny CLI that helps you write docs. While creating a new page in `/docs` folder, just use `npx hyperdocs-cli new filename` and it will update the `_sidebar.txt` too!
+
+[View the docs for CLI](https://hyperdocs.netlify.app/hyperdocs/docs/cli)
+
+---
+
+Uff there are a lot more. You can check the [Hyperdocs documentation](https://hyperdocs/hyperdocs/docs/) to check out more features and capabilities of Hyperdocs
+
+## Tech stack
+
+- Next.js - Frontend
+- Netlify - Deployment
+- Framer motion - Animation
+- Tailwind CSS - Styling
+- Prisma - ORM
+- Planetscale - Database
+- Next-Auth - Authentication
+- mdx-bundler - Markdown bundler
+- Radix-UI - Primitive components
+
+## Comparison
+
+<img
+  s="/static/blog/hyperdocs/comparison.png"
+  a="Comparison image"
+  d="770x450"
+/>
+
+### Hashnode rebuild comparison
+
+Here's [Hashnode support docs'](https://support.hashnode.com) repo made with Hyperdocs
+
+<img
+  s="/static/blog/hyperdocs/hashnode-rebuild.png"
+  a="Hashnode rebuild image"
+  d="475x475"
+/>
+
+<details>
+  <summary>The `package.json` only contains a single dev dependency</summary>
+  <img
+    s="/static/blog/hyperdocs/package-json.png"
+    a="Hashnode rebuild package.json image"
+    d="475x475"
+  />
+</details>
+
+And here's the same docs built with Docusaurus
+
+<img
+  s="/static/blog/hyperdocs/docusaurus-rebuild.png"
+  a="Docusaurus rebuild image"
+  d="680x780"
+/>
+
+> In both of the images, docs/ folder contain same files. In the first one(with Hyperdocs), there's no frontmatter in every page!
+
+## Challenges faced
+
+### Building CLI
+
+I've never built a CLI before. But when I was comparing all the tools out there, [cac](https://github.com/egoist/cac) seemed to be a great choice. After using cac with [tsup](https://github.com/egoist/tsup), I realized that building CLIs are way easier than I expected them to be.
+
+I'll be writing a blog about them in near future too. Let me know if you're interested.
+
+### The holy-grail layout
+
+Getting the three column layout with tailwindcss was a bit difficult. After tinkering with tailwind classes for sometime and taking help by inspecting the tailwindcss docs, I was able to get it right.
+
+### Markdown processing
+
+I learnt a _lot_ about markdown processors and how to use MDX. I went with Kent C. Dodd's `mdx-bundler` for bundling the markdown.
+
+`mdx-bundler` uses esbuild under the hood. So it's crazy fast. This translates to faster regeneration of pages on Netlify.
+
+### Fetching content from GitHub and generating pages
+
+This was the most difficult part. Getting the content's easy. But parsing and generating pages posed different problems. But I was able to solve them.
+
+## Roadmap
+
+Hyperdocs is not perfect yet. There's still loads essential features that can be added. Here are some of the features that will be arriving soon
+
+- Themes
+- Make Hyperdocs compatible with VSCode themes
+- Plugins
+- Site wide full text search without any 3rd party services such as Algolia
+- Custom snippets (eg. writing hn on docs(`.md` file) would translate to Hashnode on website)
+- Internationalization
+
+## Contributing
+
+PRs are always welcome.
+
+If you would like to add some components that you think would be useful while writing docs, you can add/contribute [here](https://github.com/Lalit2005/hyperdocs/blob/master/components/docs/documentation/components.tsx) :)
+
+## Thanks!
+
+Hope you like my project!  
+Please let me know what do you think about my project.

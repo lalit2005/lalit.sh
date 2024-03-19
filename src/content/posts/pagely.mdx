@@ -1,0 +1,209 @@
+---
+title: "Pagely - Build blazing fast websites with Notion in light speed"
+description: "Launch SEO friendly, blazing fast websites from Notion, Google Sheets, GitHub and Airtable with Pagely"
+image: "/static/blog/pagely/og.png"
+date: "31-7-2021"
+---
+
+import LoomEmbed from "../../components/blog/LoomEmbed";
+
+Introducing Pagely ⚡
+
+Pagely is a no-code platform that helps you launch websites from your favourite apps such as Notion, GitHub, Google Sheets, Airtable and more 🤯. Instead of letting you handle all the SEO stuff, Pagely automatically makes it SEO friendly for you. Don't like the default styles of Notion? No worries, you can edit the CSS till your heart's content. And one of my most favourite features - custom subdomains. Pagely lets you choose your subdomain of choice Eg. lalit.pagely.site, your-name.pagely.site, etc... Yeah, you got it right - Hashnode does that too. All you need to do is type out the content of your website in Notion and your website gets updated live, in real-time!!. You can make a website for your open source project on GitHub just by adding a `pagely.json` too!!. . There are a ton more features in Pagely. I'll go through all of them in this blog 😜
+
+And I've conducted a simple test which showed that Pagely sites are about 6.5 times faster than public Notion pages
+
+To showcase the power of Pagely,  
+I've made my personal website with it → https://lalit.pagely.site
+
+The styling sucks because I spent only 10 minutes or so making it 😅
+
+Oh I forgot this - from sign up to setting up a website, it only takes less than 90 seconds !!!
+
+And you might ask - how do I style the app with. That's where this useful extension - [Stylebot](https://chrome.google.com/webstore/detail/stylebot/oiaejidbmkiecgbjeifoejpgmdaleoha?hl=en) comes into play. You'll get a live preview of your styles and once its done, just copy paste the code in Pagely dashboard
+
+## Demo
+
+#### Making a website with Notion in less than 90 seconds ⚡️
+
+<LoomEmbed
+  client:load
+  text="Make a website with Notion and Pagely"
+  src="https://www.loom.com/embed/6346e330dcee433e8a924d6e35364689"
+/>
+
+#### Making a website with GitHub (`pagely.json`) in less than 60 seconds
+
+<LoomEmbed
+  client:load
+  text="Make a website with Pagely and GitHub"
+  src="https://www.loom.com/embed/846a8092765c47709d9809de7434d587"
+/>
+
+## Features 🔥
+
+1. Free custom subdomains (eg. **your-name**.pagely.site)
+2. **Live updating** website
+3. Automatic OG Image generation ( **not with puppeteer** 🤯 read more to find out)
+4. Custom styling ( with CSS )
+5. Custom `<head>` tags ( for analytics and infinite more integrations )
+6. **Showcase** your websites in the [showcase page](https://pagely.site/showcase)
+7. Blazing **fast** websites
+8. **Custom domains** ( via a workaround until [Vercel supports it](https://github.com/vercel/vercel/discussions/4840#discussioncomment-620716) )
+9. Detailed **guides** on how to integrate Pagely with various subpages
+10. Custom slugs/subpaths/subroutes/**pretty URLs** for Notion pages ( coming soon )
+11. **Password protection** for websites ( via inbuilt StaticShield integration 😜 )
+12. **Powerful integrations** such as Crisp.chat, Disqus, Google analytics, Stripe, Gumroad, etc..
+13. On Vercel .Your Pagely website is **cached on Vercel's edge network**
+14. **Automatic sitemaps** ( coming soon )
+15. Custom **fonts**, **favicons**, and more
+16. Automatic SSL ( **https** )
+17. Create awesome websites from your **mobile phone** 🤯
+18. **Full text search** for whole website ( coming soon )
+19. **Syntax highlighting** for code blocks
+20. **Dark mode** for all websites ( coming by tomorrow )
+21. Live twitter preview of your website
+22. Inbuilt tools for styling such as color picker, shadow generator, etc..
+23. Use more than 1000 fonts in your Pagely website from Google fonts
+
+## Some handy links
+
+- Live website → https://pagely.site
+- GitHub repo → https://github.com/lalit2005/pagely
+- Showcase → https://pagely.site/showcase
+- Guides → https://guides.pagely.site
+- Example site with Notion → https://lalit.pagely.site
+- Example site with GitHub → https://pagely-with-github.pagely.site/
+
+PROTIP: Get a free `.pagely` subdomain soon before it's taken 😛
+
+## Integrations
+
+Pagely can be easily integrated with thousands of third party services just by adding their scripts in `head` tag of your Pagely site. Here are some of them
+
+<img
+  src={"/static/blog/pagely/integrations.png"}
+  alt={"Pagely integrations"}
+  d={"1200x630"}
+/>
+
+## Tech Stack 📚
+
+This is one of the most surprising part of the blog. That's because Pagely is completely built with the Jamstack. Yeah, you heard me right. The whole app was made with Next.js (except for the automatic OG image generation service )
+
+- Next.js - The most amazing React framework on the planet
+- Clerk - Authentication
+- TailwindCSS - Styling
+- Radix UI - Primitive react component library
+- Headless UI - UI component library
+- Supabase (Postgres) - Database
+- Prisma - Database ORM
+- Axios - API requests
+- React Hook Form - Form validation
+- Zod - Validation
+- SWR - Remote data fetching
+- Typescript - Type checking
+- Vercel - Hosting
+- Glitch - Hosting ( for automatic OG Image generation )
+
+## The idea 💡
+
+Idea of building Pagely popped into my mind when I was building my previous project - [StaticShield](https://staticshield.vercel.app). To be precise - when I was building the docs for it. I had to setup the docs from scratch. Although the Nextra docs library made it really easy, I still had to make separate react components for some interactive pieces such as for adding CodeSandBox, etc.. That's when I thought of using Notion for docs. But every existing solution were a paid one. And that's the thing that pushed me to build Pagely. It's now easy to build docs, personal websites, etc.. even building fully functional e-commerce websites is possible with the help of Gumroad embeds or Stripe Payment links 🔥
+
+## Building 👨🏻‍💻
+
+How I built Pagely and the difficulties that I faced 👇
+
+### The beginning 🎬
+
+I had no idea on how to start the project at the very beginning. Then I was able to find the `react-notion-x` library which renders the Notion page. Although some blocks cannot be rendered by `react-notion-x`, those are barely used in any website such as the calendar view.
+
+### Dynamic Subdomain assignment 🌐
+
+Then the next big problem was assigning dynamic subdomains to users. This problem itself nearly took a week to get solved. At first I thought I would rewrite all routes such as `lalit.pagely.site` to `pagely.site/lalit`. I contacted Vercel Support too regarding this. But they said, it was not possible currently in their platform. Yet their fast response time saved some time. Although they mentioned that they would consider this suggestion. After a ton of research, I was able to find this treasure in Lee's [github](https://github.com/leerob/nextjs-multiple-domains/).
+
+### Server Side Rendering ⚙️
+
+That repo almost solved the problem completely. But there was another tiny problem - Server Side Rendering. Rendering the index route (`/`) on every page's request is definitely not efficient. That's when I dived deep into caching, stale-while-revalidate, `Cache-Control` headers and other caching related stuff. I finally found out the trick to cache every page. Hence I set up the caching to 15 mins. The page is updated every 15 mins now. This means that even if thousands of users visit a website for half an hour, only two requests hit the server ⚡️. This is all possible only possible because of Vercel. This would have been impossible without Vercel.
+
+And to my surprise, if you would have read the latest blog post from Hashnode, they use the same strategy to cache users' blogs. This really boosted my confidence level and finally I got to know that what I did was right 😜
+
+### Real time ⏰
+
+You might ask - how are the websites updating in real time?
+
+Pagely websites don't update in real time actually. What? Yes, instead of updating in real-time, the data for the public notion page is fetched from client-side with the help of SWR (an other library similar to react-query made by Vercel). Whenever the window's focus changes, SWR fetches the data and re-renders the page only if data is changed. All this seems like real-time for the end user.
+
+### Automatic OG Image service 🖼
+
+I came across a blog by GitHub in which they discuss about the difficulties they faced while building their OG Image generation service with the help of puppeteer. They finally state that they were able to generate a image in about 300-400ms. But the OG Image that runs on Glitch for Pagely only takes 0.2-0.6ms 💥. That's about 1500 faster!!!
+
+At the first glance you would have thought this will use Puppeteer under the hood. But no, I built this OG Image generation with the help of `sharp` npm library. Sharp is an image manipulation library and the best part is really really fast. So, the way I did it was I first generate a svg with the title of the notion page. And I convert that SVG to a PNG which is handled by the super fast sharp library. After that it's stored in the disk and then it's sent to the client. Once it's sent it's then deleted 🧹.
+
+The 2 main problems I faced here are - **i)** Since I was saving the PNG with the same name, when 2 different requests are sent simultaneously, both the request resulted in the same image. I solved it with the help of nano-id library. **ii)** I could not use custom fonts in the OG Image as sharp library did not work properly with fonts other than locally installed ones. But I've figured out the way to solve that - map every character of the required text in OG Image to it's respective SVG Path. And unfortunately, I could not figure out any npm library that does it. A huge thanks to my little bro who did it for me. He provided me all the characters' SVG paths. All I have to do is just map each character. As I'm already late to the party, I'll do that a bit later.
+
+### Authentication 🔐
+
+When it came to authentication, I literally had to do nothing because Clerk had done everything that has to be done 🤯. All I had to do was set up a project with the Clerk and Vercel integration which itself required only a couple of clicks. This is the first time I used Clerk and I'm blown away with the ease of use of Clerk. Clerk has definitely done a great job in making developer's life much easier. I loved the way in which Clerk handles the development, staging, and production environments efficiently.
+
+If you aren't using Clerk in your projects, you are really missing out so many awesome features.
+
+The only hurdle that I faced was in setting up the Production environment. Since I allow wildcard subdomains, I had to make some changes in DNS which took a lot of time to Propogate. This was the main reason for the delay in submitting my hackathon project. The folks at Clerk were really so helpful. When I was struggling to get things up and running, they were able to solve it with ease.
+
+### Styling 🖌
+
+I used my most favourite CSS framework - Tailwind CSS for the styling of the whole website. For the components such as Modals, popovers, tabs, etc.., I used Radix UI. And since I loved the modals and their animation of Headless UI, I used it too. This was my first experience with Radix UI and it really integrated very well into my Next.js project. And their docs are awesome too!
+
+### Code editor 🗒
+
+I had to embed a tiny code editor in Pagely where the user had to write custom styles and custom `<head>` tags. I wanted to go with Monaco editor ( the one in VSCode ), but after some research I found that I had to make some changes in Webpack configurations. After I did that, the whole page crashed. Then I found that Monaco could not be used with Next.js 11. Hence I rolled out me sleeves to make my own tiny editor. This was the part where GitHub copilot helped me a lot. I had to only write the code for managing quotes (`"`) in textarea. And since this snippet was similar for different characters such as `{`, `[` etc.., Copilot killed it. And here's the final result 👇
+
+<LoomEmbed
+  client:load
+  text="Pagely's code editor"
+  src="https://www.loom.com/embed/0095d434a4cf4f0fb8b6faf7f3f6aa84"
+/>
+
+### Pretty URLs 💻
+
+This is the feature to be the best one of all in Pagely. And I was really hopeful that it'll turn out well. But when I started using the `getAllPagesInSpace` function from `react-notion-x` library, everything stopped working. And I had to with notion-ids itself as the subpaths for subpages. But once I figure out how to get this working correctly, there's so many things I can do. Some of them are - automatic subpaths, pretty-urls, seo settings for every page, password protection of certain pages only, custom sub routes and many more. I hope I can get it working soon
+
+### Database 📚
+
+I used Supabase for database, the open source alternative for Firebase. Supabase gives you full control over the Postgres DB and gives unlimited API calls for free 🤯. This is my third project with Supabase and they have always impressed me with their speed of development. A brand new dashboard with reports of API requests, Network Ingress, Egress, etc.. and auth version 2 with phone auth was launched yesterday!! And the Supabase's launch week is currently on in which they ship super cool features everyday for a week
+
+### ORM ◮
+
+I've used Prisma as the ORM. This is the first time I'm using Prisma and now, I love it so much that I cannot live without it. Prisma together with Typescript is really a god's gift. You get autocomplete of your database fields too 🤯. Hats off to the Prisma team. They have recently launched the preview of MongoDB integration.
+
+### StaticShield integration 🛡
+
+This is the part I absolutely loved doing. I wanted to make the process as seamless as possible. All you have to do is click on the `Protect this website with StaticShield` from Pagely dashboard and you will be redirected to StaticShield. All you have to do in there is enter a password for your website and BOOM 💥. Your website is password protected
+
+<LoomEmbed
+  client:load
+  text="Pagely + StaticShield"
+  src="https://www.loom.com/embed/fffc1a796b354e039cd19e45e263bb9d"
+/>
+
+### Custom domains 🌐
+
+This is the feature I wanted to be in Pagely at any cost. I tried setting up Caddy server in Repl.it, Glitch, Heroku and many more platforms. But none of them worked. I came across a GitHub discussion where a Vercelian who said that Vercel will be removing the 50 domains limit soon. As soon as they do it, I can implement that too in Pagely. In the meantime, if you want a custom domain for your Pagely website - it's possible via rewrites. I've written a detailed guide about it in the [guides](https://)
+
+## What's possible with Pagely 🤔
+
+- Landing pages
+- Personal portfolio websites
+- Documentation
+- Help centre for your app
+- Roadmaps
+- Career pages
+- Fully fledged e-commerce websites
+- Blogs
+- Podcast sites
+- Knowledge base websites
+- And infinite more. The limit's only your creativity 🌈
+
+## Thanks 🤗
+
+Thank you so much for reading my article. Hope you liked it 🙂

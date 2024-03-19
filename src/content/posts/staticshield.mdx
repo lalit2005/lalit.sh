@@ -1,0 +1,264 @@
+---
+title: "Introducing StaticShield: Password protect any website in less than 2 mins."
+description: "How I built StaticShield for the HarperDB Hashnode Hackathon"
+image: "/static/blog/staticshield/og.png"
+date: "30-6-2021"
+---
+
+import LoomEmbed from "../../components/blog/LoomEmbed.tsx";
+
+Introducing StaticShield 🛡
+
+<img src={"/static/blog/staticshield/frameworks.png"} alt={""} d={"780x115"} />
+
+StaticShield is the **easiest way to password protect websites**. Be it either static
+or dynamic ones, all you need is just a single line of code to make your app protected.
+Really!! **only a single line of code is required** in the `head` of the document!
+StaticShield easily works with any favourite framework of your choice. Either the
+good ol' HTML or the modern Nextjs, everything just works like magic. You can set
+an expiration time for the user to logout after a certain period of time automatically
+or you can programatically log out the user at any given point of time. Oh, how did
+I forget this - security. Since StaticShield has to deal with protecting sensitive
+content, I have given security the utmost priority. I have taken some security measures,
+that I have neither seen nor heard about anyone doing it to their apps. Read more
+to find out! I guess this is too much of a introduction, lets deep dive in
+
+## Demo
+
+Here's a working demo -> https://staticshield-with-html.netlify.app/
+
+Watch how to password protect a website in less than 2 mins 👇
+
+<LoomEmbed
+  client:load
+  text="Password protect a website in record time"
+  src="https://loom.com/embed/d591d8f7bc784fc89240993e660f6898"
+/>
+
+## Some useful links that you might require
+
+1. StaticShield website - https://staticshield.vercel.app
+2. StaticShield Docs - https://staticshield.vercel.app/docs/
+3. GitHub repo - https://github.com/Lalit2005/staticshield
+4. GitHub repo (docs) - https://github.com/Lalit2005/staticshield-docs
+5. GitHub repo (StaticShield examples) - https://github.com/Lalit2005/staticshield-examples
+
+## Examples
+
+Here are some examples 👇
+
+- https://staticshield-with-html.netlify.app
+- https://staticshield-with-nextjs-11.netlify.app/
+- https://staticshield-with-sveltekit.netlify.app/protected
+- https://staticshield-with-nuxtjs.netlify.app
+- https://staticshield-with-svelte.netlify.app/
+- https://with-nextjs-11-whole-app.netlify.app
+- https://staticshield-with-vuejs.netlify.app
+
+## Tech stack 📚
+
+1. Next.js - The most amazing React framework on the planet
+2. TailwindCSS - Styling
+3. Geist UI - React component library
+4. HarperDB - Database
+5. Nextra - Documentation
+6. Auth0 - Authentication
+7. Axios - API requests
+8. React Hook Form - Form validation
+9. Zod - Validation
+10. Web3forms - Form submissions
+11. SWR - Remote data fetching
+12. Typescript - Type checking
+13. Uglify-js - Minifying script
+14. Next-PWA - Convert website to Progressive web app
+15. Vercel - Hosting
+
+## The birth of the Idea 💡
+
+Once, I just wanted to make an app where only me and my friends could have chat. Just like WhatsApp but only for predefined users. But building a full blown authentication for such an app was definitely an overkill. I just wanted to password protect it. But when I searched the whole internet for a solution, I could not find one 😑. That's when I thought about [StaticShield](https://staticshield.vercel.app). Although this name sounds like _Covishield_ (A coronavirus vaccine, another name for Astrazeneca), I branistormed this idea and also the name before covid vaccines came out.
+
+## Prototyping 🎨
+
+I rarely make prototypes of projects before making them, but for StaticShield, I just wanted to draw a bigger picture of the architecture. For that, I used Excalidraw and it's really an amazing one! But about after a week, I just completely forgot that I had made prototypes 😅
+
+Here is an image of the prototype 👇
+
+<img
+  src={"/static/blog/staticshield/prototype.png"}
+  alt={"Prototype (Excalidraw)"}
+  d={"780x290"}
+/>
+
+## Design ✨
+
+When it comes to design, Vercel is the best. If you carefully observe, most of the design is inspired from Vercel. All their websites look really aesthetic and slick. And that's an another great reason to love Vercel (in fact, who doesn't like Vercel). And that's why I used Vercel's design system/component library itself. If you do not know about it, it's called Geist UI. Geist UI really made the development super simple while keeping the app quality top notch. And this probably is the reason StaticShield gives the Vercel's feel and vibe 🤔
+
+<img src={"/static/blog/staticshield/review.png"} alt={""} d={"505x75"} />
+
+> The design of Vercel is concise and aesthetic, this is an important reason for popularity of Vercel.
+>
+> – Geist UI
+
+## Authentication 🔐
+
+Since I heard a lot about the newly released Auth0 library specially made for Next.js, I used it for StaticShield. Since StaticShield is vaguely similar to Auth0, I thought it would be difficult to build an Auth0 kind of application on top of Auth0 itself. But it wasn't that difficult as expected 😅
+
+Auth0 really simplified the process of adding authentication and authorization. All it required was only two lines of copy pasted code
+
+```js:pages/auth/[...auth].js
+import { handleAuth } from '@auth0/nextjs-auth0';
+export default handleAuth();
+```
+
+The first bug/challenge I faced in building StaticShield was a bug that got solved mysteriously. Auth0 did not work at the first time when I implemented it. I searched all over StackOverflow but ended up without success. I tried to restart the server too, but I did not work. I started the following day trying to reinstall the `nextjs-auth0` library. But that did not work too. I was hopeless. When frustration overpowered my patience, I just restarted the server again and again. Finally!! After the 5<sup>th</sup> or 6<sup>th</sup> time, it automatically worked!! Till date, I have never seen a bug like this that never throws out an error and not work too! but works when restarting the next app 5-6 times. Anyways, Auth0 is great and the `@auth0/nextjs-auth0` library is super awesome too!
+
+## Developer Experience (DX) 👨🏻‍💻
+
+Have you wondered how Vercel gained popularity? It's because of the developer experience it provides in its every product. Every step it takes, makes the life of a developer much easier. I too wanted to provide the smoothest developer experience in StaticShield just like Vercel. In fact I tried to recreate the feedback widget of Vercel in my app. Since I did not find much time, I just made a basic version of it 🙂
+I also wrote the docs really really fast. But unfortunately, I could not complete them. So, I'll be keeping them for another day. If you can and have time, please do [contribute to the docs](https://staticshield.vercel.app/docs). P.S: You don't require rocket science
+
+<img
+  src={"/static/blog/staticshield/feedback.png"}
+  alt={"Feedback widget"}
+  d={"930x580"}
+/>
+
+## User Interface and Dashboard 🖥
+
+Many elements and infinite tiny-tiny details in StaticShield are inspired from Vercel's user interface. A good example here would be the status of the site. The tiny dot shows before the name of the site, whether the logins to the site are blocked or allowed (Yep, you can block and allow logins too!). In Vercel's interface, this dot shows the status of the deployment.
+
+<img src={"/static/blog/staticshield/dot.png"} alt={""} d={"420x170"} />
+
+---
+
+The dashboard layout is completely made with TailwindCSS and its brand new and powerful `JIT` engine. The positioning of the right side of the dashboard was the most difficult one. But still I managed to create a descent one.
+
+<img
+  src={"/static/blog/staticshield/dashboard.png"}
+  alt={"Dashboard"}
+  d={"1200x630"}
+/>
+
+To make the app more accessible, I added tooltips at many places
+
+<img
+  src={"/static/blog/staticshield/tooltips.png"}
+  alt={"Various Tooltips"}
+  d={"1200x630"}
+/>
+
+## API (Serverless functions) ▲
+
+All the API endpoints are serverless functions hosted on Vercel. API's play a main role in querying data from db, posting data to Harper DB, and updating them. But the only problem I faced was the error that every developer at least encounters once - CORS. Yeah, CORS was required for a single serverless function that verifies token. But this token was sent from other websites, hence other domains. I tried all sorts of possible solution such as `cors` library, `next-cors` and many more. But none worked. Finally after a dozen of solutions, I found the correct one. The solution was simple. All I had to do was add the following to `vercel.json` -
+
+```json:vercel.json
+"headers": [
+    {
+      "source": "/api/verify-token/",
+      "headers": [
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+        }
+      ]
+    }
+  ]
+```
+
+and this to the serverless function -
+
+```js
+res.setHeader("Access-Control-Allow-Origin", "*");
+res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+```
+
+This is actually a combination of 3 different solution to `cors` problem.
+
+## Security 👮🏻‍♂️
+
+This is the part where I spent most of the time. I took security really seriously for StaticShield. I have taken some steps in hashing the passwords that I have never seen anyone doing. Before storing any password to HarperDB, I hash it 33 times in total. Yeah, you heard me right.
+
+At first, I combine the plaintext password with a long secret(stored in environment variables) and then hash it with the powerful **SHA-256** hashing algorithm. Then I just reverse this SHA-256 hash. Finally I hash this hash **2<sup>5</sup> times** with another really powerful, battle tested algorithm - **Bcrypt**.
+
+And i guess, there's no way to get the plaintext password back. Here's how the `hashPassword.ts` file looks like -
+
+```ts:lib/hashPassword.ts
+import bcrypt from 'bcrypt';
+import { SHA256 } from 'crypto-js';
+
+const hashPassword = (password: string) => {
+  const SHAHash = SHA256(password + process.env.HASH_SECRET).toString();
+  const reversedSHAHash = SHAHash.split('').reverse().join('');
+  const bcryptHashedPassword = bcrypt.hashSync(reversedSHAHash, 5);
+  return bcryptHashedPassword;
+};
+
+export default hashPassword;
+```
+
+## Database (HarperDB 🦮 )
+
+I have used one of the most unique and best database in the world - HarperDB. HarperDB works seamlessly with SQL as well as NoSQL queries. It harnesses the power of both worlds. For StaticShield updating, reading and deleting seemed easy with SQL. All it required was single line queries such as
+
+```ts
+const res = await fetch(process.env.HARPERDB_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Basic ${process.env.HARPERDB_KEY}`,
+  },
+  body: JSON.stringify({
+    operation: "sql",
+    sql: `SELECT * FROM site_schema.sites where user_id = "${userId}"`,
+  }),
+});
+```
+
+But creating a new record was really easy with NoSQL queries. Here lies the true power of HarperDB where it provides you with the flexibilitity in writing complex as well as simple queries.
+
+```ts
+const res = await fetch(process.env.HARPERDB_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Basic ${process.env.HARPERDB_KEY}`,
+  },
+  body: JSON.stringify({
+    operation: "insert",
+    schema: "site_schema",
+    table: "sites",
+    records: [{ ...record, user_id }],
+  }),
+});
+```
+
+## Features ✨
+
+The complete list of features of StaticShield
+
+- Password protect site (in 2mins)
+- Log out the user after a certain period of time automatically ⏰
+- Or log out the user programatically 🔒
+- Framework Agnostic - [works with any framework](https://staticshield.vercel.app/with) 🔥
+- [Documentation](https://staticshield.vercel.app/docs/) 📑
+- Block logins to any password protected site temporarily ❌
+- Readymade code snippets ⚡️
+- PWA - Progressive Web App. Install it anywhere! It's only about 500kb
+
+## Future Roadmap 🗺
+
+- Ability to add usernames and separate password for each site instead of only password
+- Customize the login page
+- Add Cypress tests
+- Add screenshot preview of every
+- Improve documentation
+
+## Thanks 🙏
+
+Thanks a lot for reading till the end. Hope you enjoyed reading on how I built StaticShield. Feel free to comment down your thoughts below in the comments section below

@@ -1,0 +1,426 @@
+---
+title: "A quick introduction to Prisma"
+description: "Learn about Prisma ORM in a snap with this cheatsheet"
+date: "3-9-2023"
+image: "/static/blog/a-quick-introduction-to-prisma/og.png"
+---
+
+Let's see what's Prisma all about and how can it help you be more productive. Prisma really simplifies the way how we communicate with databases by providing an easy to use API and incredible typescript support.
+
+Before we begin, let me make myself clear that I will just be going through the Prisma's core API (more like a cheatsheet) with which you can begin to use Prisma. If you would like to have a complete and detailed guide, please do wait for some days, till I finish it 😁
+
+Prisma describes itself as **Next-generation Node.js and TypeScriptORM**. Let's take a look at some awesome features in Prisma 👇
+
+## Features
+
+Some of the awesome features of Prisma
+
+- Beautiful API
+- Incredible Typescript support
+- Migrations
+- Prisma Studio (a GUI to manage your data)
+- Active maintenance
+- Support for DB of your choice (Postgres/SQL/SQLite/MongoDB)
+- Awesome and friendly community
+- And a whole lot more...
+
+## Introduction
+
+Prisma's API abstracts a lot of confusing stuff in databases. It's easy to use API almost feels like reading english sentences when written properly. And it's soo easy to get started and I'm sure you're going to love it. The learning curve is also almost straight and it took me just about a couple of minutes to get started and understand the core concepts of API. I did not have to scroll through the long docs, because of the mind blowing typescript support. But do not worry, I believe even without using typescript VSCode provides type suggestions.
+
+I have used prisma only with Next.js, so I will not be able to exactly tell how it integrates with other technologies. But I'm sure you can find your way [here](https://www.prisma.io/#:~:textEnterprise%20Event-,PRISMA%20WITH,-Prisma%20with%20Next).
+
+> 💡 I will only be concentrating on querying database with Prisma and not on integrating it with any frameworks.
+
+## How does Prisma provide dynamic type support? 🤔
+
+Prisma **generates a Typescript interfaces based on your database schema.** It's almost a mind blowing experience to have type suggestions of your database fields!! But how to get this thing work? You will have to just a few CLI commands to get this work. When you run `yarn prisma db pull`, two commands run under the hood -
+
+- `yarn prisma introspect` which translates your database to what Prisma calls the **P**risma **S**chema **L**anguage (PSL) which you can find in `schema.prisma` file.
+- `yarn prsima generate` which generates type definitions based on your schema in `schema.prisma` 🤯. It also generates customized JSDoc comments (that provides tiny documentation when hovered on, in VSCode)
+- <img
+    src={"/static/blog/a-quick-introduction-to-prisma/jsdoc.png"}
+    alt={"JSDoc Comments"}
+    d={"700x300"}
+  />{" "}
+
+You can run both of these as standalone commands, but Prisma has decided to deprecate the use of `yarn prisma introspect` command in favour of
+`yarn prisma db pull` in the last release.
+
+## Now let's dive in 🌊
+
+If you previously have database with fields and data, just type in `prisma init` to initiate Prisma with a `prisma` folder. Now run `yarn prisma db pull` to get the schema in schema.prisma and type definitions for your database.
+
+For the sake of example, let me use the following schema(a part of schema from my previous project - [Pagely](https://github.com/Lalit2005/pagely/blob/master/prisma/schema.prisma)) which is simple without any relations for demonstrating the Prisma API 👇
+
+```ts:prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NotionSites {
+  id                  String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  notionPageUrl       String   @unique @db.VarChar
+  siteName            String   @db.VarChar
+  siteDesc            String   @db.VarChar
+  customCss           String?  @db.VarChar
+  createdAt           DateTime @default(now()) @db.Timestamp(6)
+  createdBy           String   @db.VarChar
+  subdomain           String   @unique @db.VarChar
+  ogImageUrl          String?  @db.VarChar
+  customHead          String?  @db.VarChar
+  inShowcase          Boolean  @default(false)
+  isPasswordProtected Boolean  @default(false)
+}
+```
+
+And have a `prisma.ts` or `prisma.js` file that instantiates a prisma client and avoids multiple connections to the database.
+
+```js \PrismaClient\1-2
+// utils/prisma.ts
+
+import { PrismaClient } from "@prisma/client";
+
+let prisma: PrismaClient;
+
+if (process.env.NODE_ENV === "production") {
+  prisma = new PrismaClient();
+} else {
+  if (!global.prisma) {
+    global.prisma = new PrismaClient();
+  }
+  prisma = global.prisma;
+}
+
+export default prisma;
+```
+
+## Let's start querying ❓
+
+### Get/Select all records from `NotionSites 📖`
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function getAllSites() {
+  const sites = await prisma.notionSites.findMany();
+  // yes, that's all is requried!!
+  console.log(allNotionSites);
+})();
+```
+
+### Get all sites created by user who's `id` is `123 📖`
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function getAllSites() {
+  let userId = "123"; // you can get this from request's body or other sources
+
+  const sites = await prisma.notionSites.findMany({
+    where: {
+      createdBy: userId,
+    },
+  });
+})();
+```
+
+Aren't the queries just like reading an english sentence 😜
+
+### Limit the user's sites' query to 10 records at max and order them by `createdAt` in descending order `📖`
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function getAllSites() {
+  let userId = "123"; // you can get this from request's body or other sources
+
+  const sites = await prisma.notionSites.findMany({
+    where: {
+      createdBy: userId,
+    },
+    take: 10,
+    orderBy: {
+      createdAt: "desc", // you can use 'asc' for ascending order too!!
+    },
+  });
+})();
+```
+
+### Find a single site's record `📖`
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function getSite() {
+  let siteId = "123"; // you can get this from request's body or other sources
+
+  const sites = await prisma.notionSites.findUnique({
+    where: {
+      id: siteId,
+    },
+  });
+})();
+```
+
+### Let's create a new record in `notionSites` table! ✚
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function createSite() {
+  const sites = await prisma.notionSites.create({
+    data: {
+      notionPageUrl: "https://notion.so/k35ef03....",
+      siteName: "My favourite site",
+      siteDesc: "Just a description",
+      createdBy: "github|1344340",
+      subdomain: "demo-subdomain",
+      // other fields are optional!!
+    },
+  });
+})();
+```
+
+### Update the `siteDesc` for the previous inserted record!
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function updateSite() {
+  let siteId = "123123";
+
+  const sites = await prisma.notionSites.update({
+    where: {
+      id: siteId,
+    },
+    data: {
+      siteDesc: "Updated description",
+    },
+  });
+})();
+```
+
+### Let's now delete this site `🗑`
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function deleteSite() {
+  let siteIdToBeDeleted = "123123";
+
+  const sites = await prisma.notionSites.delete({
+    where: {
+      id: siteIdToBeDeleted,
+    },
+  });
+})();
+```
+
+## Make queries with relations
+
+Since the previous `prisma.schema` does not have any relations, let me introduce to a new one with a simple **one-to-many**(1-n) relation which I'll be using till the end of the blog
+
+```ts:prisma/schema.prisma {3-5,13}
+model Todos {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  todo       String?   @db.VarChar
+  isDone     Boolean   @default(false)
+  todolist   todolists @relation(fields: [todolistId], references: [id])
+  todolistId String    @db.Uuid
+}
+
+model Todolists {
+  id                  String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  todolistName        String   @db.VarChar
+  createdBy           String   @db.VarChar
+  createdAt           DateTime @default(now()) @db.Timestamptz(6)
+  todos               Todos[]
+}
+```
+
+All the above lines that are wrapped between hyphens are those that make the relations possible. Note that `todos` in `Todolists` model has `Todos[]` which shows that all the todos under a Todolist can be accessed as if todos were an array inside the Todolist. Ahh, I know it's confusing. I'm sure you'll get this by seeing the examples below that are almost self explanatory just like the previous examples.
+
+### Get a todolist without todos `📖`
+
+```js
+import prisma from "@/utils/prisma";
+
+(async function getTodolist() {
+  const todoList = await prisma.todolists.findUnique({
+    where: {
+      id: "123123",
+    },
+  });
+})();
+```
+
+### Get a todolist with all the todos that belong to it `📖`
+
+```js
+import prisma from '@/utils/prisma'
+
+(async function getTodolist() {
+
+  const todoList = await prisma.todolists.findUnique({
+    where: {
+      id: '123123',
+    },
+    include: {
+      todos: true
+    },
+})()
+```
+
+### Create a todolist along with some todos in it ✚
+
+```js
+import prisma from '@/utils/prisma'
+
+(async function newSite() {
+
+  const todoList = await prisma.todolists.create({
+    data: {
+      createdBy: 'github|1344340',
+      todolistName: 'My todolist',
+      todos: {
+        create: {
+          todo: 'A todo here',
+        },
+      },
+    },
+  });
+)()
+```
+
+### Delete a todolist `🗑`
+
+To first remove a todolist, all todos that are under that todolist must be removed. There's a **better approach** than the one below which is shown in a later section with **Prisma Transactions**
+
+```js
+import prisma from '@/utils/prisma'
+
+(async function deleteSite() {
+
+  const deleteTodo = await prisma.todos.deleteMany({
+    where: {
+      todolistId: '123123',
+    },
+  });
+
+  const deleteTodoList = await prisma.todolists.delete({
+    where: {
+      id: '123123',
+    },
+  });
+)()
+```
+
+---
+
+other CRUD operations with relations are the same as shown before. If you would like to know all of them, just visit [this](https://github.com/Lalit2005/paperclip/tree/016b8c3cf7cc61098fd10b7f08750fcbd159aea0/pages/api/todo) directory in my previous project ([Paperclip](https://papercliphq.vercel.app/)) for all CRUD operations.
+
+## Prisma Transactions
+
+Prisma transactions help you group independent queries to database and send them as a **single request** to database. Some of situations when you want to use Prisma transactions -
+
+- Fetch data for a dashboard from different tables
+- Create a user in db and some data about that user in different tables
+- Any queries that spans multiple tables...
+
+> Note: It's also important to note that if you want to share data/access data from other between multiple queries, please visit [this](https://www.prisma.io/docs/guides/performance-and-optimization/prisma-client-transactions-guide) page for alternative solutions
+
+We pass an array of queries to `prisma.$transaction` that gives us an array of results back
+
+Let's look at some examples below
+
+### Get all undone `todos` and `todolist`s that contain the word "home" in them
+
+Note that we are **only** awaiting the request that initiates a transaction
+
+```js
+import prisma from '@/utils/prisma'
+
+(async function getData() {
+
+  const todosRequest = prisma.todos.findMany({
+    where: {
+      isDone: false
+    },
+  });
+
+  const todolistsRequest = prisma.todolists.findMany({
+    where: {
+      todolistName: {
+        contains: 'home'
+      }
+    },
+  });
+
+  // we are "only" awaiting the request below
+  const [todos, todolists] = await prisma.$transaction([todosRequest, todolistsRequest])
+)()
+```
+
+### Delete all the `todos` before deleting a `todolist 🗑`
+
+```js
+import prisma from '@/utils/prisma'
+
+(async function deleteSite() {
+
+  const deleteTodoRequest = prisma.todos.deleteMany({
+    where: {
+      todolistId: '123123',
+    },
+  });
+
+  const deleteTodoListRequest = prisma.todolists.delete({
+    where: {
+      id: '123123',
+    },
+  });
+
+  // now we just dump both the above requests in a prisma transaction
+  const [deletedTodos, deletedTodolist] = await prisma.$transaction([
+    deleteTodoRequest,
+    deleteTodoListRequest
+  ])
+
+)()
+```
+
+---
+
+And this is just the tip of the iceberg. The above examples are just some of the main features of prisma. There are a ton more awesome features such as
+
+- Full text search on Postgres database (launched this week, now in preview)
+- Execute raw queries
+- Automatically updates the `updated_at` field when `@updatedAt`attribute is set
+- Support for **MongoDB** (also in preview mode)
+- Upserting data
+- And the list goes on
+
+I'll be discussing about some of the others in my next blog...
+
+## Bonus 😍
+
+**Stickers!!!!!!!!!!!!**
+
+If you love Prisma just like me and would like to have some Prisma stickers, click on any of link below and scroll down to the bottom of page before the footer that says `Get Stickers →`.
+
+- [Prisma + Next.js stickers](https://www.prisma.io/nextjs)
+- [Prisma + GraphQL stickers](https://www.prisma.io/graphql)
+- [Prisma + Apollo stickers](https://www.prisma.io/apollo)
+- [Prisma + Nest.js stickers](https://www.prisma.io/nestjs)
+- [Prisma + Express stickers](https://www.prisma.io/express)
+- [Prisma + Hapi stickers](https://www.prisma.io/hapi)
+
+Just fill out a quick form and the stickers will find you soon. I just received my stickers for **Prisma + Next.js** and they are super cool!!!
+
+Thanks for reading till the end. Hope this blog provided you some value.

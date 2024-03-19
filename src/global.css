@@ -3,12 +3,11 @@
 }
 
 .title {
-  @apply mb-5 text-6xl font-medium bg-gradient-to-br from-zinc-300 font-serif to-zinc-400 text-transparent bg-clip-text py-1;
-  /* @apply mb-5 opacity-40 text-6xl font-medium  bg-gradient-to-b from-zinc-100 font-serif to-zinc-100/40 text-transparent bg-clip-text py-1 -ml-2; */
+  @apply mb-5 text-5xl sm:text-6xl font-medium bg-gradient-to-br from-zinc-300 font-serif to-zinc-400 text-transparent bg-clip-text py-1;
 }
 
 .md-content {
-  @apply prose-zinc prose-lg prose-headings:font-medium prose-ul:list-disc prose-ol:list-decimal prose-pre:!bg-zinc-900 prose-blockquote:px-10 prose-blockquote:py-1 prose-blockquote:border-l-2 prose-blockquote:bg-zinc-900 prose-blockquote:border-blue-500/40 prose-a:underline prose-a:decoration-dotted prose-a:decoration-blue-500 prose-a:hover:decoration-blue-400;
+  @apply prose-zinc prose-lg prose-headings:font-medium prose-ul:list-disc prose-ol:list-decimal prose-pre:!bg-zinc-900 prose-blockquote:px-10 prose-blockquote:py-1 prose-blockquote:border-l-2 prose-blockquote:bg-zinc-900 prose-blockquote:border-blue-500/40 prose-a:underline prose-a:decoration-dotted prose-a:decoration-blue-500 prose-a:hover:decoration-blue-400 prose-code:font-mono;
 }
 
 .prose-lg p > code {

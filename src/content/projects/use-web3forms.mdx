@@ -1,11 +1,10 @@
 ---
-name: use-web3forms library
-summary: A tiny library that makes form submissions easier with Web3Forms.
+title: use-web3forms library
+description: Tiny library that simplifies form submissions.
 image: /static/project/use-web3forms/og.png
 link: https://npm.im/use-web3forms
 github: https://github.com/lalit2005/use-web3forms
-postedOn: '2021-09-25'
-builtWith: ['typescript', 'microbundle']
+date: "2021-09-25"
 ---
 
 This was my first open source NPM package. It is a simple library that makes form submission easier with the help of [Web3forms](https://web3forms.com).  
@@ -23,11 +22,11 @@ Here's how you you would use it with typescript:
 ```tsx
 interface FormData {
   hello: string;
-  isWorking: boolean | 'Probably';
+  isWorking: boolean | "Probably";
 }
 
 const { submit } = useWeb3forms<FormData>({
-  apikey: 'YOUR_ACCESS_KEY_HERE',
+  apikey: "YOUR_ACCESS_KEY_HERE",
   onSuccess: (successMessage, data) => {
     console.log(successMessage, data);
   },
@@ -40,10 +39,11 @@ const { submit } = useWeb3forms<FormData>({
 <button
   onClick={(e) => {
     submit({
-      hello: 'world',
-      isWorking: 'Yesss!!!',
+      hello: "world",
+      isWorking: "Yesss!!!",
     });
-  }}>
+  }}
+>
   Submit form
 </button>;
 ```

@@ -1,0 +1,88 @@
+---
+title: React tiny tooltip - a react library to create beautiful tooltips
+description: A brief overview of why and how I created a react library to simplify building tooltips
+image: "/static/blog/react-tiny-tooltip/og.png"
+date: "26-5-2022"
+---
+
+I built a small and lightweight react library for my projects sometime ago for creating beautiful and accessible tooltips in react - **React
+Tiny Tooltip**. I'm happy to open source it now!
+
+This short blog goes through briefly about this package.
+
+## Using the library
+
+```jsx
+import React from "react";
+import { Tooltip } from "react-tiny-tooltip";
+
+export default () => (
+  <div>
+    <Tooltip content="Hello there" side="top">
+      <button>Hover here!</button>
+    </Tooltip>
+  </div>
+);
+```
+
+Here's how it would look
+
+<img s="/static/blog/react-tiny-tooltip/tooltip.png" a="tooltip" d="645x360" />
+
+## Handy links
+
+[GitHub Repo](https://github.com/lalit2005/react-tiny-tooltip) &bull; [Documentation website](https://hyperdocs.netlify.app/rtt)
+
+## Inspiration
+
+I built a tooltip when I was building a project - [Paperclip](https://usepaperclip.now.sh). I liked the tooltips that I built in Paperclip and wanted to reuse it in all my [other projects](/projects), so I went ahead and created `react-tiny-tooltip`. I've used it in all my projects from then. But this repo was closed source from a long time. So I just found some free time this weekend to open source this. Hope you like it ✌️
+
+## Libraries used
+
+List of all libraries used in creating this package
+
+- [tsup](https://npm.im/tsup) for bundling code
+- [Hyperdocs](https://hyperdocs.netlify.app/rtt) for creating docs (an other project by me ;))
+- [Radix UI](https://radix-ui.com) for the unstyled tooltip component
+- [Stitches](https://stitches.dev) for styling the tooltip
+- [np](https://github.com/sindresorhus/np) for managing releases
+- Typescript to provide type definitions for the package
+
+I've purposefully limited the props that can be passed to the component so as to reduce the complexity.
+
+The available props currently are `arrow`, `delay`, `side` and `sideOffset`.
+
+## Building documentation
+
+I used my own project [Hyperdocs](https://hyperdocs.netlify.app) for creating docs for this project. I'm biased but I was able to complete the docs in no time. All I did was added a bunch of markdown files and linked it with Hyperdocs. This process was much simple than what I had to do for my other project [StaticShield](https://staticshield.vercel.app) with [Nextra](https://nextra.vercel.app).
+
+With Hyperdocs I was able to add add code previews right inside the docs for each prop. This helps you play with the library while reading the docs along side.
+
+<img
+  s="/static/blog/react-tiny-tooltip/docs.png"
+  a="React tiny tooltip docs"
+  d="785x420"
+/>
+
+## React components as tooltip content
+
+This is one of the main reason why I created this library. Most of the libraries only support rendering text in the tooltip. But `react-tiny-tooltip` can render any react fragment as tooltip content too!
+
+<img
+  s="/static/blog/react-tiny-tooltip/playground.png"
+  a="React components in tooltip content"
+  d="780x350"
+/>
+
+Get started now by running
+
+```bash
+npm install react-tiny-tooltip
+```
+
+---
+
+Thanks for reading this small article 😄
+
+Feel free to open PRs and issues on the [repo](https://github.com/lalit2005/react-tiny-tooltip)
+You can also submit feedback from the [project](https://hyperdocs.netlify.app/rtt/docs).
