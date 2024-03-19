@@ -49,11 +49,11 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 ---
 
-<Layout title="Projects | Lalit">
+<Layout title="Projects • Lalit">
   <div>
-    <h1 class="title">projects</h1>
+    <h1 class="title">Projects</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch -mx-3">
       {
         projectsData.map((p, i) => (
           <a href={`/projects/${p.name.toLowerCase().replace(/\s/g, "-")}`}>

@@ -3,7 +3,8 @@
 }
 
 .title {
-  @apply mb-5 opacity-40 text-6xl font-light bg-gradient-to-b from-zinc-100 font-mono to-zinc-100/40 text-transparent bg-clip-text py-1 -ml-2;
+  @apply mb-5 text-6xl font-medium bg-gradient-to-br from-zinc-300 font-serif to-zinc-400 text-transparent bg-clip-text py-1;
+  /* @apply mb-5 opacity-40 text-6xl font-medium  bg-gradient-to-b from-zinc-100 font-serif to-zinc-100/40 text-transparent bg-clip-text py-1 -ml-2; */
 }
 
 .md-content {

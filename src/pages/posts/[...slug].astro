@@ -19,7 +19,16 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-  <h1 class="title mb-5 text-balance">
+  <p class="uppercase font-mono font-semibold opacity-60 mb-2">
+    {
+      Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }).format(new Date(post.data.date))
+    }
+  </p>
+  <h1 class="title text-balance mb-5">
     {post.data.title}
   </h1>
 

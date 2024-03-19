@@ -1,0 +1,51 @@
+---
+name: use-web3forms library
+summary: A tiny library that makes form submissions easier with Web3Forms.
+image: /static/project/use-web3forms/og.png
+link: https://npm.im/use-web3forms
+github: https://github.com/lalit2005/use-web3forms
+postedOn: '2021-09-25'
+builtWith: ['typescript', 'microbundle']
+---
+
+This was my first open source NPM package. It is a simple library that makes form submission easier with the help of [Web3forms](https://web3forms.com).  
+I built it to reduce the boilerplate code required to submit a form.
+
+I learnt about **managing releases** and publishing packages on NPM and Yarn.  
+Moreover, I dived deep into **javascript bundlers**. I tried a handful of them such as _Rollup_, _esbuild_, [bunchee](https://github.com/huozhi/bunchee) and [microbundle](https://github.com/developit/microbundle).
+
+I finally came down to microbundle as it required no configuration and was beginner friendly too. (bunchee too requires no configuration!!)
+
+I found out about microbundle from [Paco Coursey](https://twitter.com/pacocoursey)'s `next-themes` [package](https://github.com/pacocoursey/next-themes).
+
+Here's how you you would use it with typescript:
+
+```tsx
+interface FormData {
+  hello: string;
+  isWorking: boolean | 'Probably';
+}
+
+const { submit } = useWeb3forms<FormData>({
+  apikey: 'YOUR_ACCESS_KEY_HERE',
+  onSuccess: (successMessage, data) => {
+    console.log(successMessage, data);
+  },
+  onError: (errorMessage, data) => {
+    console.log(errorMessage, data);
+  },
+});
+
+// Submitting the form
+<button
+  onClick={(e) => {
+    submit({
+      hello: 'world',
+      isWorking: 'Yesss!!!',
+    });
+  }}>
+  Submit form
+</button>;
+```
+
+> `use-web3forms` is only about \<500 bytes.
