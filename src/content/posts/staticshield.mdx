@@ -188,13 +188,13 @@ At first, I combine the plaintext password with a long secret(stored in environm
 
 And i guess, there's no way to get the plaintext password back. Here's how the `hashPassword.ts` file looks like -
 
-```ts:lib/hashPassword.ts
-import bcrypt from 'bcrypt';
-import { SHA256 } from 'crypto-js';
+```ts
+import bcrypt from "bcrypt";
+import { SHA256 } from "crypto-js";
 
 const hashPassword = (password: string) => {
   const SHAHash = SHA256(password + process.env.HASH_SECRET).toString();
-  const reversedSHAHash = SHAHash.split('').reverse().join('');
+  const reversedSHAHash = SHAHash.split("").reverse().join("");
   const bcryptHashedPassword = bcrypt.hashSync(reversedSHAHash, 5);
   return bcryptHashedPassword;
 };

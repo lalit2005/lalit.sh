@@ -1,7 +1,7 @@
 ---
 title: "A quick introduction to Prisma"
 description: "Learn about Prisma ORM in a snap with this cheatsheet"
-date: "3-9-2023"
+date: "3-9-2021"
 image: "/static/blog/a-quick-introduction-to-prisma/og.png"
 ---
 
@@ -38,11 +38,7 @@ Prisma **generates a Typescript interfaces based on your database schema.** It's
 
 - `yarn prisma introspect` which translates your database to what Prisma calls the **P**risma **S**chema **L**anguage (PSL) which you can find in `schema.prisma` file.
 - `yarn prsima generate` which generates type definitions based on your schema in `schema.prisma` 🤯. It also generates customized JSDoc comments (that provides tiny documentation when hovered on, in VSCode)
-- <img
-    src={"/static/blog/a-quick-introduction-to-prisma/jsdoc.png"}
-    alt={"JSDoc Comments"}
-    d={"700x300"}
-  />{" "}
+- ![JSDoc Comments](/static/blog/a-quick-introduction-to-prisma/jsdoc.png)
 
 You can run both of these as standalone commands, but Prisma has decided to deprecate the use of `yarn prisma introspect` command in favour of
 `yarn prisma db pull` in the last release.
@@ -53,7 +49,7 @@ If you previously have database with fields and data, just type in `prisma init`
 
 For the sake of example, let me use the following schema(a part of schema from my previous project - [Pagely](https://github.com/Lalit2005/pagely/blob/master/prisma/schema.prisma)) which is simple without any relations for demonstrating the Prisma API 👇
 
-```ts:prisma/schema.prisma
+```ts
 generator client {
   provider = "prisma-client-js"
 }
@@ -226,7 +222,7 @@ import prisma from "@/utils/prisma";
 
 Since the previous `prisma.schema` does not have any relations, let me introduce to a new one with a simple **one-to-many**(1-n) relation which I'll be using till the end of the blog
 
-```ts:prisma/schema.prisma {3-5,13}
+```ts
 model Todos {
   id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   todo       String?   @db.VarChar

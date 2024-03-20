@@ -2,7 +2,7 @@
 title: "Introducing Hyperdocs - The simplest way to build docs for your project"
 description: "How I built Hyperdocs - A docs generator that combines the best of Docusaurus and GitBook"
 image: "/static/blog/hyperdocs/og.png"
-date: "1-3-2023"
+date: "1-3-2022"
 ---
 
 import LoomEmbed from "../../components/blog/LoomEmbed";
@@ -22,11 +22,7 @@ To show the potential of Hyperdocs, I rebuilt the Hashnode support docs with Hyp
 
 ## Overview
 
-<img
-  s="/static/blog/hyperdocs/generated-docs.png"
-  a="Generated docs"
-  d="775x500"
-/>
+![Generated docs](/static/blog/hyperdocs/generated-docs.png)
 
 Before diving into my project, let's see how the current tooling works.
 
@@ -84,11 +80,7 @@ A brief overview of all the features of Hyperdocs
 
 ### Feedbacks
 
-<img
-  s="/static/blog/hyperdocs/feedback.png"
-  a="Feedbacks dashboard image"
-  d="775x500"
-/>
+![Feedbacks dashboard](/static/blog/hyperdocs/feedback.png)
 
 Feedbacks play a vital role in creating a delightful documentation.
 
@@ -102,11 +94,7 @@ No other documentation tools out there provide such a feature.
 
 ### Blogs
 
-<img
-  s="/static/blog/hyperdocs/blogs.png"
-  a="Blogs dashboard image"
-  d="770x335"
-/>
+![Blogs dashboard](/static/blog/hyperdocs/blogs.png)
 
 Hyperdocs lets you add a blog that lives beside the documentation
 
@@ -136,7 +124,7 @@ But wait. As the size of markdown files grow, adding the file to `_sidebar.txt` 
 
 ### CLI
 
-<img src="/static/blog/hyperdocs/cli.png" alt="CLI image" />
+![CLI image](/static/blog/hyperdocs/cli.png)
 
 Hyperdocs also has a tiny CLI that helps you write docs. While creating a new page in `/docs` folder, just use `npx hyperdocs-cli new filename` and it will update the `_sidebar.txt` too!
 
@@ -160,38 +148,22 @@ Uff there are a lot more. You can check the [Hyperdocs documentation](https://hy
 
 ## Comparison
 
-<img
-  s="/static/blog/hyperdocs/comparison.png"
-  a="Comparison image"
-  d="770x450"
-/>
+![Comparison image](/static/blog/hyperdocs/comparison.png)
 
 ### Hashnode rebuild comparison
 
 Here's [Hashnode support docs'](https://support.hashnode.com) repo made with Hyperdocs
 
-<img
-  s="/static/blog/hyperdocs/hashnode-rebuild.png"
-  a="Hashnode rebuild image"
-  d="475x475"
-/>
+![Hashnode rebuild image](/static/blog/hyperdocs/hashnode-rebuild.png)
 
 <details>
   <summary>The `package.json` only contains a single dev dependency</summary>
-  <img
-    s="/static/blog/hyperdocs/package-json.png"
-    a="Hashnode rebuild package.json image"
-    d="475x475"
-  />
+  ![Hashnode rebuild package.json image](/static/blog/hyperdocs/package-json.png)
 </details>
 
 And here's the same docs built with Docusaurus
 
-<img
-  s="/static/blog/hyperdocs/docusaurus-rebuild.png"
-  a="Docusaurus rebuild image"
-  d="680x780"
-/>
+![Docusaurus rebuild image](/static/blog/hyperdocs/docusaurus-rebuild.png)
 
 > In both of the images, docs/ folder contain same files. In the first one(with Hyperdocs), there's no frontmatter in every page!
 

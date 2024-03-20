@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { ExternalLink, Github, Link } from "lucide-react";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -20,8 +21,36 @@ const { Content } = await projects.render();
     {projects.data.title}
   </h1>
 
-  <p class="my-4">
-    {projects.data.description}
+  <p
+    class="-mt-4 mb-10 text-lg text-zinc-500 flex sm:items-center justify-between flex-col sm:flex-row"
+  >
+    <span>{projects.data.description}</span>
+    <span class="flex gap-4 text-left mt-2 sm:mt-auto">
+      {
+        projects.data.github && (
+          <a
+            href={projects.data.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-zinc-500 hover:text-zinc-300"
+          >
+            <Github size={24} />
+          </a>
+        )
+      }
+      {
+        projects.data.link && (
+          <a
+            href={projects.data.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-zinc-500 hover:text-zinc-300"
+          >
+            <Link />
+          </a>
+        )
+      }
+    </span>
   </p>
 
   <div class="md-content">

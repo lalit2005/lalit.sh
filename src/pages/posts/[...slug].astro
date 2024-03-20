@@ -5,15 +5,12 @@ import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
-  console.log(posts);
-  console.log("asdasd");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }
 
-console.log(Astro.props);
 const post = Astro.props.post;
 const { Content } = await post.render();
 ---
