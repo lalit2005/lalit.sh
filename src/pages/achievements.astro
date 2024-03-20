@@ -2,13 +2,13 @@
 import { getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
-let entry = await getEntry("pages", "index");
+let entry = await getEntry("pages", "achievements");
 let { Content } = await entry.render();
 ---
 
 <Layout title="Lalit Kishore • Personal Site">
   <div>
-    <h1 class="title">Lalit</h1>
+    <h1 class="title">Achievements</h1>
     <div class="md-content text-balance">
       <Content />
     </div>
