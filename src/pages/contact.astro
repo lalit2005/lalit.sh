@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm";
+---
+
+<Layout title="Contact me">
+  <h1 class="title">Contact me</h1>
+  <p class="-mt-4">Just ask anything :)</p>
+  <ContactForm client:load />
+</Layout>
