@@ -9,7 +9,7 @@ const Gallery = (props: GalleryProps) => {
       <div className="flex overflow-x-scroll space-x-5 after:contents after:h-full after:w-10 after:absolute after:right-0 after:top-0 after:bg-gradient-to-r after:from-transparent after:to-zinc-950">
         {props.images.map((image, index) => (
           <img
-            className="block max-w-96 object-cover !rounded"
+            className="block max-w-96 border border-zinc-800 object-cover !rounded"
             key={index}
             src={image.split("||")[0]}
             alt={image.split("||")[1]}
