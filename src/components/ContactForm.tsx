@@ -83,7 +83,9 @@ const ContactForm = () => {
             </p>
           )}
         </div>
-        <button typeof="submit">Send message</button>
+        <button typeof="submit" className="underline">
+          Send message
+        </button>
       </form>
       <p
         className={
