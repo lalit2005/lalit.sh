@@ -1,0 +1,39 @@
+---
+title: Dot
+description: A simple interpreted programming language written in go.
+image: /static/project/dot/og.png
+github: https://github.com/lalit2005/Dot
+date: "21-2-2024"
+---
+
+Dot is a simple interpreted programming language written in go. It is a dynamically typed language with a syntax similar to python and javascript.
+
+I built this to learn about how programming languages work and about interpreters and compilers.  
+[_Writing an interpreter in go_](https://interpreterbook.com) is an amazing book by [Thorsten Ball](https://x.com/thorstenball) and I highly recommend it to anyone who is interested in learning about interpreters and compilers.
+
+I got inspired by Linus Lee's [Ink](https://thesephist.com/posts/pl/) programming language and decided to build my own language.
+
+Some simple programs written in Dot:
+
+```
+// Hello World
+print("Hello, World!");
+
+// Fibonacci
+let fib = fn (n) {
+    if n <= 1 {
+        return n;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
+print(fib(10));
+
+// Factorial
+let fact = fn (n) {
+    if n <= 1 {
+        return 1;
+    }
+    return n * fact(n - 1);
+}
+print(fact(5));
+```
