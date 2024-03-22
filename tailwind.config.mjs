@@ -6,7 +6,7 @@ export default {
       fontFamily: {
         serif: ["Erode", "serif"],
         sans: ["Inter", "sans-serif"],
-        mono: ["Tabular", "monospace"],
+        mono: ["IBM Plex Mono", "monospace"],
       },
     },
   },

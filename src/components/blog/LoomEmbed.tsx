@@ -32,7 +32,7 @@ const LoomEmbed: React.FC<{ src: string; text: string }> = ({ src, text }) => {
           ></iframe>
         ) : (
           <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full bg-zinc-800">
-            <p className="relative text-lg font-bold text-zinc-200 select-none sm:text-2xl top-1/3">
+            <p className="relative font-bold text-zinc-200 select-none sm:text-2xl top-1/3">
               {text}
             </p>
             <div

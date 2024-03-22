@@ -1,0 +1,19 @@
+.link-underline {
+  @apply underline decoration-dotted  decoration-blue-500 hover:decoration-blue-400;
+}
+
+.title {
+  @apply mb-5 text-4xl font-medium bg-gradient-to-br from-zinc-300 font-serif to-zinc-400 text-transparent bg-clip-text py-1;
+}
+
+.md-content {
+  @apply prose-zinc prose-base prose-headings:font-medium prose-ul:list-disc prose-ol:list-decimal prose-pre:!bg-zinc-900 prose-blockquote:px-10 prose-blockquote:py-1 prose-blockquote:border-l-2 prose-blockquote:bg-zinc-900 prose-blockquote:border-blue-500/40 prose-a:underline prose-a:decoration-dotted prose-a:decoration-blue-500 prose-a:hover:decoration-blue-400 prose-code:font-mono prose-hr:opacity-35 prose-img:rounded-none;
+}
+
+.prose-lg p > code {
+  @apply bg-zinc-800 px-1 py-0.5 rounded-sm;
+}
+
+/* * {
+  border: 1px solid red;
+} */

@@ -1,0 +1,32 @@
+/**
+ * @license
+ *
+ * Font Family: Erode
+ * Designed by: Nikhil Ranganathan
+ * URL: https://www.fontshare.com/fonts/erode
+ * © 2024 Indian Type Foundry
+ *
+ * Font Style:
+ * Erode Regular
+ *
+*/
+
+@font-face {
+  font-family: "Erode";
+  src: url("../../public/fonts/Erode/Erode-Regular.woff2") format("woff2"),
+    url("../../public/fonts/Erode/Erode-Regular.woff") format("woff"),
+    url("../../public/fonts/Erode/Erode-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Erode";
+  src: url("../../public/fonts/Erode/Erode-Medium.woff2") format("woff2"),
+    url("../../public/fonts/Erode/Erode-Medium.woff") format("woff"),
+    url("../../public/fonts/Erode/Erode-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
