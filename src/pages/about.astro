@@ -6,7 +6,11 @@ const entry = await getEntry("pages", "about");
 const { Content } = await entry.render();
 ---
 
-<Layout title="About | Lalit">
+<Layout
+  title="About | Lalit"
+  description="About me"
+  image="/static/about-og.png"
+>
   <h1 class="title">About me</h1>
   <div class="md-content">
     <Content />
