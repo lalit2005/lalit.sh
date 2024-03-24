@@ -11,5 +11,5 @@
 }
 
 .prose-lg p > code {
-  @apply bg-zinc-800 px-1 py-0.5 rounded-sm;
+  @apply bg-zinc-800 px-16 py-0.5 rounded-sm;
 }
