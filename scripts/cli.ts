@@ -20,7 +20,7 @@ cli
     writeFileSync(
       `./src/content/projects/${slug}.mdx`,
       `---
-title: ${name}
+title: ${name.split("-").join(" ")}
 description: description
 image: /static/project/${slug}/og.png
 link: https://${name}.vercel.app/?ref=personalwebsite
@@ -52,7 +52,7 @@ cli
     writeFileSync(
       `./src/content/posts/${slug}.mdx`,
       `---
-title: ${name}
+title: ${name.split("-").join(" ")}
 description: description
 date: '${getDate()}'
 image: '/static/blog/${slug}/og.png'
