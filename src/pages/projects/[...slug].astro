@@ -16,7 +16,11 @@ const { projects }: { projects: CollectionEntry<"projects"> } = Astro.props;
 const { Content } = await projects.render();
 ---
 
-<Layout title={projects.data.title}>
+<Layout
+  title={projects.data.title}
+  description={projects.data.description}
+  image={projects.data.image}
+>
   <h1 class="title text-balance mb-5">
     {projects.data.title}
   </h1>

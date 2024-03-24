@@ -3,7 +3,7 @@
 }
 
 .title {
-  @apply mb-5 text-4xl font-medium bg-gradient-to-br from-zinc-300 font-serif to-zinc-400 text-transparent bg-clip-text py-1;
+  @apply mb-5 text-5xl font-medium bg-gradient-to-br from-zinc-300 font-serif to-zinc-400 text-transparent bg-clip-text py-1;
 }
 
 .md-content {
@@ -13,7 +13,3 @@
 .prose-lg p > code {
   @apply bg-zinc-800 px-1 py-0.5 rounded-sm;
 }
-
-/* * {
-  border: 1px solid red;
-} */

@@ -15,7 +15,11 @@ const post = Astro.props.post;
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+>
   <p class="uppercase font-mono font-semibold opacity-60 mb-2">
     {
       Intl.DateTimeFormat("en-US", {

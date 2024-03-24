@@ -7,7 +7,11 @@ import type { CollectionEntry } from "astro:content";
 const posts: CollectionEntry<"posts">[] = await getCollection("posts");
 ---
 
-<Layout title="Posts • Lalit">
+<Layout
+  title="Posts | Lalit"
+  description="List of all posts that I've written"
+  image="/static/blog/og.png"
+>
   <div>
     <h1 class="title">Posts</h1>
     <div class="post-list">

@@ -14,7 +14,11 @@ const page = Astro.props.page;
 const { Content } = await page.render();
 ---
 
-<Layout title={page.data.title}>
+<Layout
+  title={page.data.title}
+  description={page.data.description}
+  image={page.data.image}
+>
   <h1 class="title text-balance mb-5">
     {page.data.title}
   </h1>
