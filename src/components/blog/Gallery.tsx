@@ -6,10 +6,10 @@ interface GalleryProps {
 const Gallery = (props: GalleryProps) => {
   return (
     <div className="flex relative">
-      <div className="flex overflow-x-scroll space-x-5 after:contents after:h-full after:w-10 after:absolute after:right-0 after:top-0 after:bg-gradient-to-r after:from-transparent after:to-zinc-950">
+      <div className="flex overflow-x-scroll space-x-5">
         {props.images.map((image, index) => (
           <img
-            className="block max-h-64 !rounded gallery-image relative"
+            className="block max-h-64 !rounded gallery-image relative object-contain"
             data-cap={image.split("||")[1]}
             key={index}
             src={image.split("||")[0]}
