@@ -13,6 +13,8 @@ import "../styles/inter.css";
 
 import Nav from "../components/Nav.astro";
 import { ViewTransitions, fade } from "astro:transitions";
+
+const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -55,6 +57,15 @@ import { ViewTransitions, fade } from "astro:transitions";
   <body class="selection:text-blue-400 selection:bg-green-500/10">
     <Nav />
     <main class="max-w-4xl mx-auto px-5 py-2 mt-32 pb-10">
+      {
+        isProd && (
+          <script
+            defer
+            src="https://stats.lalit.sh/script.js"
+            data-website-id="6fc9b94d-5a26-4752-812a-868bed59b2a0"
+          />
+        )
+      }
       <slot />
     </main>
     <style>
