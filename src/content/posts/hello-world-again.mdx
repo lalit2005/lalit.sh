@@ -63,7 +63,30 @@ router in next.js was pretty flexible and easy to use and I wonder how much impa
 I plan to use Astro for all static websites and the main application
 with Remix with a focus on local-first approach.
 
-Along with the new website, I also used my basic figma skills to design a new profile picture for myself. This logo has my iniital `V` and my first letter of my name `L` in it.
+Along with the new website, I also used my basic figma skills to design a new profile picture for myself. This logo has my iniital `V` and my first
+letter of my name `L` in it. This also has my iniital letters in my language tamil - வ(v), ல(l) and க(k).
+
+<Gallery
+  images={[
+    "/static/blog/hello-world-again/logo.png||Logo outline",
+    "/static/blog/hello-world-again/v.png||V in tamil",
+    "/static/blog/hello-world-again/l.png||L in tamil",
+    "/static/blog/hello-world-again/k.png||K in tamil",
+  ]}
+/>
+
+And for the open graph images, I initially went with generating them on the fly with satori. But I did not want all of them to be the same.
+So I decided to design them manually in figma. Here are some of the og images that I designed.
+Creating a new og image is pretty easy - just duplicate a previous one and change the text and I can also customize if I wanted to like I did for the og image for `/` route.
+
+<Gallery
+  images={[
+    "/static/og.png||Home",
+    "/static/project/og.png||Projects",
+    "/static/blog/og.png||Blog",
+    "/static/blog/hello-world-again/og.png||This post's og image",
+  ]}
+/>
 
 I hope to write more blog posts in the future and avoid being the site that has a blog section with just one post.
 Most of my previous posts were just about the projects that I built for hackathons. I hope to write more about my thoughts and experiences in the future.
