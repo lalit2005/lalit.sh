@@ -13,8 +13,6 @@ import "../styles/inter.css";
 
 import Nav from "../components/Nav.astro";
 import { ViewTransitions, fade } from "astro:transitions";
-
-const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -58,15 +56,21 @@ const isProd = import.meta.env.PROD;
     <Nav />
     <main class="max-w-4xl mx-auto px-5 py-2 mt-32 pb-10">
       <script>
-        document.addEventListener("astro:page-load", () => {
-          const scriptTag = `<script
-            defer
-            id="stats.lalit.sh"
-            src="https://stats.lalit.sh/script.js"
-            data-website-id="6fc9b94d-5a26-4752-812a-868bed59b2a0"
-          />`;
-          document.body.insertAdjacentHTML("beforeend", scriptTag);
-        });
+        const isProd = import.meta.env.PROD;
+        if (isProd) {
+          document.addEventListener("astro:page-load", function () {
+            const script = document.createElement(
+              "script"
+            ) as HTMLScriptElement;
+            script.src = "https://stats.lalit.sh/script.js";
+            script.setAttribute(
+              "data-website-id",
+              "6fc9b94d-5a26-4752-812a-868bed59b2a0"
+            );
+            script.defer = true;
+            document.head.appendChild(script);
+          });
+        }
       </script>
       <slot />
     </main>
