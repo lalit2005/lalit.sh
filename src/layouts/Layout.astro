@@ -57,10 +57,28 @@ const isProd = import.meta.env.PROD;
   <body class="selection:text-blue-400 selection:bg-green-500/10">
     <Nav />
     <main class="max-w-4xl mx-auto px-5 py-2 mt-32 pb-10">
+      <script>
+        document.addEventListener("astro:page-load", () => {
+          const scriptTag = document.querySelector("#stats.lalit.sh");
+          console.log(scriptTag);
+          if (scriptTag) {
+            scriptTag.remove();
+            document.querySelector("head")?.appendChild(
+              Object.assign(document.createElement("script"), {
+                defer: true,
+                id: "stats.lalit.sh",
+                src: "https://stats.lalit.sh/script.js",
+                "data-website-id": "6fc9b94d-5a26-4752-812a-868bed59b2a0",
+              })
+            );
+          }
+        });
+      </script>
       {
         isProd && (
           <script
             defer
+            id="stats.lalit.sh"
             src="https://stats.lalit.sh/script.js"
             data-website-id="6fc9b94d-5a26-4752-812a-868bed59b2a0"
           />
