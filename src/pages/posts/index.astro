@@ -18,7 +18,7 @@ const posts: CollectionEntry<"posts">[] = await getCollection("posts");
       {
         posts
           .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-          .map((p, i) => (
+          .map((p) => (
             <a
               href={`/posts/${p.slug}`}
               class="hover:text-zinc-500 p-2 border-b border-b-zinc-800 flex flex-col sm:flex-row justify-between sm:items-center border-double"

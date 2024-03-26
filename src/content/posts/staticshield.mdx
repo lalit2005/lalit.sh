@@ -105,8 +105,9 @@ Since I heard a lot about the newly released Auth0 library specially made for Ne
 
 Auth0 really simplified the process of adding authentication and authorization. All it required was only two lines of copy pasted code
 
-```js:pages/auth/[...auth].js
-import { handleAuth } from '@auth0/nextjs-auth0';
+```js
+// pages/auth/[...auth].js
+import { handleAuth } from "@auth0/nextjs-auth0";
 export default handleAuth();
 ```
 
@@ -151,7 +152,8 @@ To make the app more accessible, I added tooltips at many places
 
 All the API endpoints are serverless functions hosted on Vercel. API's play a main role in querying data from db, posting data to Harper DB, and updating them. But the only problem I faced was the error that every developer at least encounters once - CORS. Yeah, CORS was required for a single serverless function that verifies token. But this token was sent from other websites, hence other domains. I tried all sorts of possible solution such as `cors` library, `next-cors` and many more. But none worked. Finally after a dozen of solutions, I found the correct one. The solution was simple. All I had to do was add the following to `vercel.json` -
 
-```json:vercel.json
+```json
+// vercel.json
 "headers": [
     {
       "source": "/api/verify-token/",

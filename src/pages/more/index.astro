@@ -23,7 +23,7 @@ const projects: CollectionEntry<"pages">[] = await getCollection(
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch -mx-3">
       {
-        projects.map((p, i) => (
+        projects.map((p) => (
           <a href={`/more/${p.slug}`}>
             <Card title={p.data.title} description={p.data.description} />
           </a>

@@ -31,7 +31,7 @@ Run `npm init` without the `-y` flag so that you can set up the required fields 
 
 This is what I had to do for linkk
 
-```txt
+```plaintext
 npm init
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
@@ -161,7 +161,8 @@ So let's create the `src/index.ts` file. This is where the main logic of the app
 
 We should be adding shebang to the top of the main file to use `node` while executing the code.
 
-```js:index.js
+```js
+// index.js
 #!/usr/bin/env node
 ```
 
@@ -169,13 +170,13 @@ We should be adding shebang to the top of the main file to use `node` while exec
 
 To see how the CLI works, you must first link it with `yarn` or `npm`. This just takes a single command:
 
-```txt
+```plaintext
 npm link
 ```
 
 or with yarn
 
-```txt
+```plaintext
 yarn link
 ```
 
@@ -318,7 +319,7 @@ For publishing packages and maintaining releases in the future, we will be using
 
 > You might have to add the `--no-tests` flag to avoid testing while releasing as we have't added tests in this tutorial
 
-```txt
+```plaintext
 np --no-2fa --no-tests
 
 

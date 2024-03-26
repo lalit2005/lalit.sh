@@ -20,7 +20,7 @@ const projects: CollectionEntry<"projects">[] = await getCollection("projects");
       {
         projects
           .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-          .map((p, i) => (
+          .map((p) => (
             <a
               href={`/projects/${p.data.title.toLowerCase().replace(/\s/g, "-")}`}
             >
