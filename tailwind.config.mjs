@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["Erode", "serif"],
+        // serif: ["IBM Plex Mono", "serif"],
         sans: ["Inter", "sans-serif"],
         mono: ["IBM Plex Mono", "monospace"],
       },
