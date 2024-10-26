@@ -70,4 +70,5 @@ image: '/static/blog/${slug}/og.png'
     console.log(chalk.green(`Successfully opened file in VSCode`));
   });
 
+cli.help();
 cli.parse();
