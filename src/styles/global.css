@@ -7,7 +7,16 @@
 }
 
 .md-content {
-  @apply prose-zinc prose-base prose-headings:font-medium prose-h2:text-xl prose-h3:text-lg prose-ul:list-disc prose-ol:list-decimal prose-pre:!bg-zinc-900 prose-blockquote:px-10 prose-blockquote:py-1 prose-blockquote:border-l-2 prose-blockquote:bg-zinc-900 prose-blockquote:border-blue-500/40 prose-a:underline prose-a:decoration-dotted prose-a:decoration-blue-500 prose-a:hover:decoration-blue-400 prose-code:font-mono prose-hr:opacity-35 prose-img:rounded-none prose-pre:text-base;
+  @apply prose-zinc prose-base;
+  @apply prose-headings:font-medium prose-h2:text-xl prose-h3:text-lg;
+  @apply prose-ul:list-disc prose-ol:list-decimal;
+  @apply prose-pre:!bg-zinc-900;
+  @apply prose-blockquote:px-10 prose-blockquote:py-1 prose-blockquote:border-l-2 prose-blockquote:bg-zinc-900 prose-blockquote:border-blue-500/40;
+  @apply prose-a:underline prose-a:decoration-dotted prose-a:decoration-blue-500 prose-a:hover:decoration-blue-400;
+  @apply prose-code:font-mono;
+  @apply prose-img:rounded-none;
+  @apply prose-pre:text-base;
+  @apply prose-hr:border-t-0 prose-hr:bg-gradient-to-r prose-hr:from-zinc-700 prose-hr:to-zinc-900 prose-hr:h-1 prose-hr:rounded-full prose-hr:-mx-10;
 }
 
 .md-content h1 code,
