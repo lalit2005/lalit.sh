@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["Erode", "monospace"],
-        sans: ["Inter", "sans-serif"],
+        serif: ["Erode", "sans-serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         mono: ["IBM Plex Mono", "monospace"],
       },
     },
